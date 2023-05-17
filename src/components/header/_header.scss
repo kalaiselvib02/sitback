@@ -1,0 +1,24 @@
+@use "../../scss/variables";
+@use "../../scss/common";
+@use "../../scss/animation";
+@use "../../scss/mixins";
+@use "../../scss/functions";
+
+header{
+    @include mixins.flexbox(space-between, center, false);
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid;
+    .logo{
+        font-size: 1.25rem
+    }
+    nav{
+       ul{
+        @include mixins.flexbox(center, center, 70px);
+        a{
+            color: variables.$black;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+       }
+    }
+}

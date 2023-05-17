@@ -1,0 +1,134 @@
+/** Start of variables **/
+/** End of variables **/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  font-family: "PT Sans", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+button, input {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+input {
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/** Start of mixin flexbox **/
+/** End of mixin flexbox **/
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-none {
+  display: none;
+}
+
+.btn {
+  border-radius: 0.25rem;
+}
+.btn.btn-sm {
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+.btn.btn-primary {
+  background-color: #008800;
+  color: #fff;
+}
+.btn.btn-muted {
+  background-color: #888888;
+  color: #000000;
+}
+
+footer {
+  padding: 1rem 4rem;
+  margin: auto;
+  background-color: #eeeeee;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid;
+}
+header .logo {
+  font-size: 1.25rem;
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  justify-content: center;
+}
+header nav ul a {
+  color: #000000;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.categories-container {
+  padding: 3rem 4rem 2rem;
+  width: 90%;
+  margin: auto;
+}
+.categories-container .hero-text-container .heading-text {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.categories-container .hero-text-container .sub-text {
+  font-size: 1.85rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=styles.css.map */

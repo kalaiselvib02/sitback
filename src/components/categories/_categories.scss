@@ -1,0 +1,25 @@
+@use "../../scss/variables";
+@use "../../scss/common";
+@use "../../scss/animation";
+@use "../../scss/mixins";
+@use "../../scss/functions";
+
+
+.categories-container{
+    padding: 3rem 4rem 2rem;
+    width: 90%;
+    margin: auto;
+    .hero-text-container{
+        .heading-text{
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        .sub-text{
+            font-size: 1.85rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+    }
+   
+}
