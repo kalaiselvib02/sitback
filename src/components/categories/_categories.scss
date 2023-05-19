@@ -21,5 +21,11 @@
             margin-bottom: 1rem;
         }
     }
+    .categories-list{
+        @include mixins.flexbox(center, center, 40px);
+        .card{
+            @include mixins.card(500px ,100% , 1rem)
+        }
+    }
    
 }

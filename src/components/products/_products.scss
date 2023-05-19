@@ -1,0 +1,43 @@
+@use "../../scss/variables";
+@use "../../scss/common";
+@use "../../scss/animation";
+@use "../../scss/mixins";
+@use "../../scss/functions";
+
+.products-container {
+    padding: 3rem 2.5rem 2rem;
+    width: 100%;
+    margin: auto;
+}
+
+.products-list {
+    @include mixins.grid();
+    .card {
+        @include mixins.card(190px, 100%, 1rem);
+
+        .card-image{
+            border-radius: 0px 8px 8px 8px;
+        }
+    }
+    .card-heading {
+        @include mixins.flexbox(space-between, center, false);
+
+        .card-title {
+            font-size: 1rem;
+            margin : 0.5rem 0;
+        }
+    }
+    .card-body{
+        padding-bottom: 0.5rem;
+
+        .card-description{
+            font-size: 0.8rem;
+            line-height: 20px;
+            margin-bottom: 0.5rem;
+        }
+    }
+    .card-footer {
+        border-top: 1px solid variables.$text-light;
+        @include mixins.flexbox(right, center, false);
+    }
+}

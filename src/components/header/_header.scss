@@ -6,19 +6,24 @@
 
 header{
     @include mixins.flexbox(space-between, center, false);
-    padding: 1.5rem 3rem;
-    border-bottom: 1px solid;
+    padding: 1rem 3rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
     .logo{
-        font-size: 1.25rem
+        font-size: 1.25rem;
+       a{
+        color: variables.$black;
+       }
     }
     nav{
        ul{
         @include mixins.flexbox(center, center, 70px);
         a{
-            color: variables.$black;
-            font-weight: 400;
             font-size: 1rem;
+            color: variables.$black;
         }
        }
+    }
+    .user-details{
+        @include mixins.flexbox(false, false, 10px);
     }
 }

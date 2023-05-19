@@ -1,7 +1,7 @@
 export const APP_CONSTANTS = {
     FETCH_URL: {
       CATEGORIES : "https://jsonmockserver.vercel.app/api/shopping/furniture/categories",
-      CATEGORY_ITEM:"https://jsonmockserver.vercel.app/api/shopping/furniture/products?category="
+      PRODUCT:"https://jsonmockserver.vercel.app/api/shopping/furniture/products?category=couches"
     },
     CATEGORY:{
         COUCHES:{
@@ -19,11 +19,16 @@ export const APP_CONSTANTS = {
         QUANTITY:"Quantity"
     },
     WISH_LIST:{
-        ADD_TO_WISHLIST:"Add TO WISHLIST"
+        ADD_TO_WISHLIST:"ADD TO WISHLIST"
     },
     MY_CART : {
         ADD_TO_CART : "ADD TO CART",
     },
+    YEARS_GAURANTEE:{
+        MULTIPLE : "YEARS GAURANTEE",
+        SINGLE : "YEAR GAURANTEE"
+    },
+    SHOP_NOW:"SHOP NOW",
     COPYRIGHTS:"COPYRIGHTS 2020",
     STORAGE_KEYS:{
      

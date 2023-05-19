@@ -32,37 +32,60 @@
           <a href="">SITBACK</a>
         </div>
         <nav>
-          <ul>
-            <li><a href="#">COUCHES</a></li>
-            <li><a href="#">CHAIRS</a></li>
-            <li><a href="#">DINING</a></li>
-          </ul>
+          <ul class="navigation-list"></ul>
         </nav>
         <div class="user-details">
           <div class="user-name">Kalaiselvi Balu</div>
+          <i class="fa-sharp fa-solid fa-sort-down"></i>
         </div>
       </header>
       <!--End of Header-->
       <!-- Start of categories-container-->
-      <div class="categories-container">
-       <div class="hero-text-container">
-        <h1 class="heading-text">Your Home, With Love</h1>
-        <p class="sub-text">Come, Choose from millions of products</p>
-       </div>
+      <div class="categories-container d-none">
+        <div class="hero-text-container">
+          <h1 class="heading-text">Your Home, With Love</h1>
+          <p class="sub-text">Come, Choose from millions of products</p>
+        </div>
+        <div class="categories-list"></div>
       </div>
       <!-- End of categories-container-->
+      <div class="container">
+        <!--Start of products-container-->
+        <div class="products-container">
+          <div class="products-list"></div>
+        </div>
+        <!--End of products-container-->
+        <!--Start of order-details-container-->
+        <div class="order-details-container">
+          <nav>
+            <ul>
+              <li><a href="#cartContainer">MY CART</a></li>
+              <li><a href="#wishListContainer">MY WISHLIST</a></li>
+            </ul>
+          </nav>
+          <div>
+            <div class="cart-container" id="cartContainer">
+             
+            </div>
+            <div class="wishlist-container" id="wishListContainer">
+          
+            </div>
+          </div>
+        </div>
+        <!--End of order-details-container-->
+      </div>
       <!--Start of footer-->
       <footer>
-       <div class="container">
-        <p>COPYRIGHTS 2020</p>
-       </div>
+        <div class="container">
+          <p>COPYRIGHTS 2020</p>
+        </div>
       </footer>
       <!--End of footer-->
     </div>
     <!--End of Wrapper-->
     <!--Start of external JS Files-->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="src/js/main.js"></script>
     <!--End of external JS Files-->
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module" src="src/js/main.js"></script>
 </html>

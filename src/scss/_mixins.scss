@@ -2,6 +2,7 @@
 @mixin flexbox($justify, $align, $gap) {
     display: flex;
 
+
     @if $align {
         align-items: $align;
     }
@@ -15,3 +16,30 @@
     }
 }
 /** End of mixin flexbox **/
+
+
+/** Start of mixin flexbox **/
+@mixin card($img-height , $img-width , $text-size) {
+   img {
+    height: $img-height;
+    width: $img-width;
+    object-fit: cover;
+   }
+   h2{
+    font-weight: 400;
+    margin: 0.5rem 0 1rem;
+    font-size: 2rem;
+   }
+   p {
+    font-size: $text-size;
+    line-height: 25px;
+   }
+   
+}
+
+
+@mixin grid() {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px;
+}

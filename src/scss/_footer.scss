@@ -1,7 +1,15 @@
 @use "variables";
 
 footer{
+    display: none;
     padding: 1rem 4rem;
     margin: auto;
     background-color: variables.$grey;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    .container{
+        width: 90%;
+        margin: 0 auto;
+    }
 }
