@@ -1,0 +1,9 @@
+
+@use "../../scss/variables";
+@use "../../scss/mixins";
+
+.cart-container {
+    .card {
+        @include mixins.card(100px , 100px , 0.8rem)
+    }
+}

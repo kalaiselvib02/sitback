@@ -1,0 +1,13 @@
+
+@use "variables" ;
+@use "mixins" ;
+
+.text-center{
+    text-align: center;
+}
+.d-flex{
+    display: flex;
+}
+.d-none{
+    display: none;
+}

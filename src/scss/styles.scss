@@ -1,0 +1,40 @@
+
+@use "../scss/global";
+@use "../scss/common";
+@use "../scss/variables";
+@use "../scss/mixins";
+@use "../scss/functions";
+@use "../scss/button";
+@use "../scss/cards";
+@use "../scss//nav";
+@use "../scss/footer";
+
+
+
+@use "../components/header/header";
+@use "../components/categories/categories";
+@use "../components/products/products";
+@use "../components/cart/cart";
+
+.container {
+    position: relative;
+    .order-details-container{
+        position: fixed;
+        width: 25%;
+        background: variables.$light;
+        height: 100vh;
+        right: 0px;
+        top: 58px;
+        padding: 2.5rem 2rem 0;
+
+        nav{
+            ul{
+                @include mixins.flexbox(false, center, 20px);
+                a{
+                    color: variables.$text-light;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}

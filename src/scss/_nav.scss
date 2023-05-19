@@ -1,0 +1,13 @@
+@use "variables";
+
+nav{
+    ul{
+     a{
+         font-weight: 400;
+        
+        &.active{
+            background-color: pink;
+        }
+     }
+    }
+ }

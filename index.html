@@ -1,12 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <!--Start of meta tags-->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Kalai" />
+    <meta name="description" content="Furniture Shopping Website" />
+    <meta name="keywords" content="shopping,couches,chairs,dining" />
+    <!--End of meta tags-->
+    <title>Sitback</title>
+    <!--Start of fav icon-->
+    <!-- <link rel="icon" href="/src/assets/images/favicon_io/favicon.ico" /> -->
+    <!--End of fav icon-->
+    <!--Start of CDN Files-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!--End of Styles Files-->
+    <!--Start of Styles Files-->
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <!--End of Styles Files-->
+  </head>
+  <body>
+    <!--Start of Wrapper-->
+    <div class="wrapper">
+      <!--Start of Header-->
+      <header>
+        <div class="logo">
+          <a href="">SITBACK</a>
+        </div>
+        <nav>
+          <ul class="navigation-list"></ul>
+        </nav>
+        <div class="user-details">
+          <div class="user-name">Kalaiselvi Balu</div>
+          <i class="fa-sharp fa-solid fa-sort-down"></i>
+        </div>
+      </header>
+      <!--End of Header-->
+      <!-- Start of categories-container-->
+      <div class="categories-container d-none">
+        <div class="hero-text-container">
+          <h1 class="heading-text">Your Home, With Love</h1>
+          <p class="sub-text">Come, Choose from millions of products</p>
+        </div>
+        <div class="categories-list"></div>
+      </div>
+      <!-- End of categories-container-->
+      <div class="container">
+        <!--Start of products-container-->
+        <div class="products-container">
+          <div class="products-list"></div>
+        </div>
+        <!--End of products-container-->
+        <!--Start of order-details-container-->
+        <div class="order-details-container">
+          <nav>
+            <ul>
+              <li><a href="#cartContainer">MY CART</a></li>
+              <li><a href="#wishListContainer">MY WISHLIST</a></li>
+            </ul>
+          </nav>
+          <div>
+            <div class="cart-container" id="cartContainer">
+             
+            </div>
+            <div class="wishlist-container" id="wishListContainer">
+          
+            </div>
+          </div>
+        </div>
+        <!--End of order-details-container-->
+      </div>
+      <!--Start of footer-->
+      <footer>
+        <div class="container">
+          <p>COPYRIGHTS 2020</p>
+        </div>
+      </footer>
+      <!--End of footer-->
+    </div>
+    <!--End of Wrapper-->
+    <!--Start of external JS Files-->
+    <!--End of external JS Files-->
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module" src="src/js/main.js"></script>
 </html>

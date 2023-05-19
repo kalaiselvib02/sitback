@@ -1,0 +1,21 @@
+@use  "variables";
+
+.btn{
+    border-bottom-right-radius: 0.45rem;
+    &.btn-sm{
+        padding: 0.65rem 0.85rem;
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin:0.85rem 0
+    }
+    &.btn-primary{
+        background-color: variables.$black;
+        color: variables.$white;
+    }
+    &.btn-muted{
+        background-color: transparent;
+        color: variables.$text-light;
+    }
+   
+    
+}
