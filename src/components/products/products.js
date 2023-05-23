@@ -1,7 +1,7 @@
 
 import { SharedData } from "../../js/shared/shared.js";
 import { Card } from "../../js/shared/cards.js";
-import { Cart } from "../cart/cart.js";
+
 
 export const Products = {
     display: () => displayProductsList()

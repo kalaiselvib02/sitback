@@ -1,16 +1,21 @@
 @use  "variables";
+@use "fonts";
 
 .btn{
-    border-bottom-right-radius: 0.45rem;
+    border-bottom-right-radius: 0.35rem;
+    font-family: variables.$font-primary;
+    &.btn-xs {
+        padding: 0.45rem 0.55rem;
+        font-size: 0.58rem;
+    }
     &.btn-sm{
-        padding: 0.65rem 0.85rem;
-        font-size: 0.8rem;
-        font-weight: 400;
-        margin:0.85rem 0
+        padding: 0.65rem 1.5rem;
+        font-size: 0.7rem;
     }
     &.btn-primary{
         background-color: variables.$black;
         color: variables.$white;
+      
     }
     &.btn-muted{
         background-color: transparent;

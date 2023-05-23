@@ -41,7 +41,7 @@
       </header>
       <!--End of Header-->
       <!-- Start of categories-container-->
-      <div class="categories-container d-none">
+      <div class="categories-container">
         <div class="hero-text-container">
           <h1 class="heading-text">Your Home, With Love</h1>
           <p class="sub-text">Come, Choose from millions of products</p>
@@ -49,14 +49,14 @@
         <div class="categories-list"></div>
       </div>
       <!-- End of categories-container-->
-      <div class="container">
+      <div class="container d-none">
         <!--Start of products-container-->
         <div class="products-container">
           <div class="products-list"></div>
         </div>
         <!--End of products-container-->
         <!--Start of order-details-container-->
-        <div class="order-details-container">
+        <div class="cart-wishlist-container d-none">
           <nav>
             <ul>
               <li><a href="#cartContainer">MY CART</a></li>
@@ -64,11 +64,17 @@
             </ul>
           </nav>
           <div>
-            <div class="cart-container" id="cartContainer">
+            <div class="cart-container d-none" id="cartContainer">
              
             </div>
-            <div class="wishlist-container" id="wishListContainer">
+            <div class="wishlist-container d-none" id="wishListContainer">
           
+            </div>
+            <div class="checkout-container d-none">
+              <div>
+                <p class="container-heading text-sm">TOTAL AMOUNT</p>
+                <p class="total-amount"></p>
+              </div>
             </div>
           </div>
         </div>

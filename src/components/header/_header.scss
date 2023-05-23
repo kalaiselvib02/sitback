@@ -3,27 +3,37 @@
 @use "../../scss/animation";
 @use "../../scss/mixins";
 @use "../../scss/functions";
+@use "../../scss/fonts";
+
 
 header{
     @include mixins.flexbox(space-between, center, false);
-    padding: 1rem 3rem;
+    padding: 1.25rem 2.5rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
     .logo{
-        font-size: 1.25rem;
+        font-size: 1rem;
+        font-family: 'Primary-Medium';
        a{
         color: variables.$black;
+        letter-spacing: 1.2px;
        }
     }
     nav{
        ul{
         @include mixins.flexbox(center, center, 70px);
         a{
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: variables.$black;
+            font-family: Primary-Medium;
+            text-transform: uppercase;
+            
         }
        }
     }
     .user-details{
         @include mixins.flexbox(false, false, 10px);
+        font-size: 0.8rem;
+        color: variables.$black;
+        font-family: Primary-Medium;
     }
 }

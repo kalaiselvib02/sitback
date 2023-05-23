@@ -1,0 +1,9 @@
+@use "../../../scss/variables";
+@use "../../../scss/fonts";
+
+.checkout-container{
+    .container-heading{
+        font-size: 0.7rem;
+        font-family: variables.$font-primary;
+    }
+}

@@ -1,11 +1,21 @@
-import { Cart } from "../../components/cart/cart.js";
+import { Cart } from "../../components/cart-wishlist/cart/cart.js";
+import { QuantityCounter } from "../../components/quantity-counter/quantity-counter.js";
+import { Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
 import { APP_CONSTANTS } from "../../constants/constants.js";
-import { appendGroup, createElement, createTextNode } from "../utils/utils.js";
+import {
+  appendGroup,
+  createElement,
+  createTextNode,
+  createButton,
+  convertToRupee,
+} from "../utils/utils.js";
+
 export const Card = {
   create: {
     categoriesList: (item, fragment) => createCategoryCard(item, fragment),
     productsList: (item, fragment) => createProductCard(item, fragment),
-    cartList: (item , fragment) => createCartCard(item , fragment),
+    cartList: (item, fragment) => createCartCard(item, fragment),
+    wishList : (item , fragment) => createWishListCard(item , fragment)
   },
 };
 
@@ -74,6 +84,7 @@ const createProductCard = (item, fragment) => {
       {
         className: "btn btn-sm btn-muted btn-wishlist",
         text: APP_CONSTANTS.WISH_LIST.ADD_TO_WISHLIST,
+        btnListener: () => Wishlist.add(item),
       },
       {
         className: "btn btn-sm btn-primary btn-cart",
@@ -126,42 +137,75 @@ const productCard = (itemDetails, fragment) => {
   return fragment;
 };
 
-const createCartCard = (item , fragment) => {
+const createCartCard = (item, fragment) => {
   const cardItemDetails = {
     cardId: item.id,
     cardImageUrl: item.photo,
     cardImageOnErrorUrl: item.onError,
     cardTitle: item.name,
     cardPrice: item.price,
+    cardQuantity: item.quantity ? item.quantity : 1,
   };
   cartCard(cardItemDetails, fragment);
+};
+
+const createWishListCard  = (item, fragment) => {
+  const cardItemDetails = {
+    cardId: item.id,
+    cardImageUrl: item.photo,
+    cardImageOnErrorUrl: item.onError,
+    cardTitle: item.name,
+    cardPrice: item.price,
+    cardQuantity: item.quantity ? item.quantity : 1,
+  };
+  wishListCard(cardItemDetails , fragment)
 }
 
-const cartCard = (itemDetails , fragment) => {
+const cartWishlistCard = (itemDetails) => {
   const card = createElement("div", "card");
-
   const image = createImage(
     itemDetails.cardImageUrl,
     itemDetails.cardImageOnErrorUrl
   );
-
   const title = createCardTitle(itemDetails.cardTitle);
   const price = createPrice(itemDetails.cardPrice);
   const cardDetails = createElement("div", "card-details");
   const cardHeading = createElement("div", "card-heading");
   cardHeading.appendChild(title);
   cardHeading.appendChild(price);
-
-
   appendGroup([image, cardHeading], cardDetails);
+  card.append(cardDetails)
+  return card
+};
+
+const cartCard = (itemDetails, fragment) => {
+ const card = cartWishlistCard(itemDetails , fragment);
+ const cardDetails = card.querySelector(".card-details")
+  const quantityCounterFragment = new DocumentFragment();
+  const cartQuantityCounter = QuantityCounter.create(itemDetails , quantityCounterFragment)
+  appendGroup([cartQuantityCounter], cardDetails);
   card.appendChild(cardDetails);
   fragment.appendChild(card);
-  console.log(fragment)
   const parentSelector = document.querySelector(".cart-container");
-  parentSelector.append(fragment)
-  // return fragment;
-}
+  parentSelector.append(fragment);
+ 
+};
 
+const wishListCard = (itemDetails , fragment) => {
+  const card = cartWishlistCard(itemDetails , fragment);
+  console.log(card)
+  const cardDetails = card.querySelector(".card-details")
+  console.log(cardDetails)
+  const addToCartBtn = createButton(
+    APP_CONSTANTS.MY_CART.ADD_TO_CART,
+    "btn btn-xs btn-primary btn-addToCart item-right-section"
+  );
+  appendGroup([addToCartBtn], cardDetails);
+  card.appendChild(cardDetails);
+  fragment.appendChild(card);
+  const wishListContainer = document.querySelector(".wishlist-container");
+  wishListContainer.appendChild(fragment);
+};
 const createImage = (src, onError) => {
   const imageVal = createElement("img", "card-image");
   imageVal.setAttribute("src", src);
@@ -178,8 +222,8 @@ const createCardTitle = (name) => {
 
 const createPrice = (price) => {
   const priceVal = createElement("p", "card-price");
-  const textNode = createTextNode(price);
-  priceVal.appendChild(textNode);
+  const priceText = convertToRupee(price);
+  priceVal.textContent = priceText;
   return priceVal;
 };
 
@@ -191,6 +235,7 @@ const createDescription = (description) => {
 };
 
 const createGauranteeText = (gauranteeYears) => {
+  const createShield = createElement("p", "");
   const gauranteeText = createElement("p", "card-gauranteeText");
   const gaurantYearsNum = parseInt(gauranteeYears);
   const gauranteeVal =
@@ -202,9 +247,4 @@ const createGauranteeText = (gauranteeYears) => {
   const textNode = createTextNode(gauranteeVal);
   gauranteeText.appendChild(textNode);
   return gauranteeText;
-};
-const createButton = (buttonContent, className) => {
-  const button = createElement("button", className);
-  button.textContent = buttonContent;
-  return button;
 };

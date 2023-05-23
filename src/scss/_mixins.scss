@@ -19,20 +19,20 @@
 
 
 /** Start of mixin flexbox **/
-@mixin card($img-height , $img-width , $text-size) {
+@mixin card($img-height , $img-width , $title-text , $text-size) {
    img {
     height: $img-height;
     width: $img-width;
     object-fit: cover;
    }
    h2{
-    font-weight: 400;
-    margin: 0.5rem 0 1rem;
-    font-size: 2rem;
+    font-size: $title-text;
    }
    p {
     font-size: $text-size;
-    line-height: 25px;
+   }
+   button{
+    margin: 0.8rem 0;
    }
    
 }

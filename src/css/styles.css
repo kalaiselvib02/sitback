@@ -1,5 +1,7 @@
-/** Start of variables **/
-/** End of variables **/
+/** Start of variables - colors **/
+/** End of variables - colors **/
+/** Start of variables - fonts **/
+/** End of variables - fonts **/
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +16,7 @@ body {
   padding: 0px;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Product Sans", sans-serif;
 }
 
 ul {
@@ -49,14 +51,41 @@ a {
   display: none;
 }
 
+@font-face {
+  font-family: "Primary-Thin";
+  src: url("../assets/fonts/ProductSans-Thin.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Primary-Regular";
+  src: url("../assets/fonts/Product-Sans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Primary-Medium";
+  src: url("../assets/fonts/ProductSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Primary-Bold";
+  src: url("../assets/fonts/Product-Sans-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
 .btn {
-  border-bottom-right-radius: 0.45rem;
+  border-bottom-right-radius: 0.35rem;
+  font-family: "Product Sans", sans-serif;
+}
+.btn.btn-xs {
+  padding: 0.45rem 0.55rem;
+  font-size: 0.58rem;
 }
 .btn.btn-sm {
-  padding: 0.65rem 0.85rem;
-  font-size: 0.8rem;
-  font-weight: 400;
-  margin: 0.85rem 0;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.7rem;
 }
 .btn.btn-primary {
   background-color: #000000;
@@ -64,14 +93,15 @@ a {
 }
 .btn.btn-muted {
   background-color: transparent;
-  color: #999999;
+  color: #777575;
 }
 
+nav ul li {
+  position: relative;
+}
 nav ul a {
   font-weight: 400;
-}
-nav ul a.active {
-  background-color: pink;
+  font-family: "Product Sans", sans-serif;
 }
 
 footer {
@@ -112,14 +142,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 1.25rem 2.5rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
 }
 header .logo {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-family: "Primary-Medium";
 }
 header .logo a {
   color: #000000;
+  letter-spacing: 1.2px;
 }
 header nav ul {
   display: flex;
@@ -128,12 +160,17 @@ header nav ul {
   justify-content: center;
 }
 header nav ul a {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #000000;
+  font-family: Primary-Medium;
+  text-transform: uppercase;
 }
 header .user-details {
   display: flex;
   gap: 10px;
+  font-size: 0.8rem;
+  color: #000000;
+  font-family: Primary-Medium;
 }
 
 .categories-container {
@@ -141,8 +178,11 @@ header .user-details {
   width: 90%;
   margin: auto;
 }
+.categories-container .hero-text-container {
+  font-family: "Product Sans", sans-serif;
+}
 .categories-container .hero-text-container .heading-text {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 400;
   margin-bottom: 1rem;
 }
@@ -152,10 +192,14 @@ header .user-details {
   margin-bottom: 1rem;
 }
 .categories-container .categories-list {
+  margin: 1.5rem 0;
   display: flex;
   align-items: center;
   gap: 40px;
   justify-content: center;
+}
+.categories-container .categories-list .card {
+  font-family: "Product Sans", sans-serif;
 }
 .categories-container .categories-list .card img {
   height: 500px;
@@ -164,13 +208,22 @@ header .user-details {
      object-fit: cover;
 }
 .categories-container .categories-list .card h2 {
-  font-weight: 400;
-  margin: 0.5rem 0 1rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 .categories-container .categories-list .card p {
-  font-size: 1rem;
-  line-height: 25px;
+  font-size: 0.9rem;
+}
+.categories-container .categories-list .card button {
+  margin: 0.8rem 0;
+}
+.categories-container .categories-list .card .card-title {
+  font-family: "Primary-Regular";
+  margin: 0.8rem 0;
+}
+.categories-container .categories-list .card .card-description {
+  font-family: "Primary-Regular";
+  line-height: 22px;
+  color: #777575;
 }
 
 .products-container {
@@ -191,13 +244,13 @@ header .user-details {
      object-fit: cover;
 }
 .products-list .card h2 {
-  font-weight: 400;
-  margin: 0.5rem 0 1rem;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 .products-list .card p {
   font-size: 1rem;
-  line-height: 25px;
+}
+.products-list .card button {
+  margin: 0.8rem 0;
 }
 .products-list .card .card-image {
   border-radius: 0px 8px 8px 8px;
@@ -206,46 +259,39 @@ header .user-details {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: "Primary-Medium";
 }
 .products-list .card-heading .card-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin: 0.5rem 0;
 }
 .products-list .card-body {
   padding-bottom: 0.5rem;
 }
 .products-list .card-body .card-description {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   line-height: 20px;
   margin-bottom: 0.5rem;
+  color: #777575;
+  font-family: "Primary-Regular";
+}
+.products-list .card-body .card-gauranteeText {
+  color: #008800;
+  text-transform: uppercase;
+  font-family: "Primary-Bold";
+  font-size: 0.7rem;
 }
 .products-list .card-footer {
-  border-top: 1px solid #999999;
+  border-top: 1px solid #f4eeee;
   display: flex;
   align-items: center;
   justify-content: right;
 }
 
-.cart-container .card img {
-  height: 100px;
-  width: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.cart-container .card h2 {
-  font-weight: 400;
-  margin: 0.5rem 0 1rem;
-  font-size: 2rem;
-}
-.cart-container .card p {
-  font-size: 0.8rem;
-  line-height: 25px;
-}
-
 .container {
   position: relative;
 }
-.container .order-details-container {
+.container .cart-wishlist-container {
   position: fixed;
   width: 25%;
   background: #f7f7f7;
@@ -254,12 +300,88 @@ header .user-details {
   top: 58px;
   padding: 2.5rem 2rem 0;
 }
-.container .order-details-container nav ul {
+.container .cart-wishlist-container nav ul {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-.container .order-details-container nav ul a {
-  color: #999999;
+.container .cart-wishlist-container nav ul a {
+  color: #777575;
   font-size: 0.9rem;
+}
+.container .cart-wishlist-container .card {
+  background-color: #fff;
+  width: 90%;
+  margin: 2rem auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
+  height: 65px;
+  border-radius: 0.5rem;
+}
+.container .cart-wishlist-container .card img {
+  height: 100px;
+  width: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .cart-wishlist-container .card h2 {
+  font-size: 1rem;
+}
+.container .cart-wishlist-container .card p {
+  font-size: 0.8rem;
+}
+.container .cart-wishlist-container .card button {
+  margin: 0.8rem 0;
+}
+.container .cart-wishlist-container .card-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  position: relative;
+}
+.container .cart-wishlist-container .card-details img {
+  border-radius: 0.6rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: inherit;
+  position: relative;
+  top: 10px;
+  left: -20px;
+  height: 80px;
+}
+.container .cart-wishlist-container .card-heading h2 {
+  font-size: 0.8rem;
+}
+.container .cart-wishlist-container .item-right-section {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  top: auto;
+  left: auto;
+}
+
+/** Start of variables - colors **/
+/** End of variables - colors **/
+/** Start of variables - fonts **/
+/** End of variables - fonts **/
+/** Start of mixin flexbox **/
+/** End of mixin flexbox **/
+/** Start of mixin flexbox **/
+.quantity-counter {
+  background: #fff;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  font-size: 0.7rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
+  border-radius: 0.25rem;
+}
+.quantity-counter button {
+  padding: 0.35rem;
+}
+
+.checkout-container .container-heading {
+  font-size: 0.7rem;
+  font-family: "Product Sans", sans-serif;
 }/*# sourceMappingURL=styles.css.map */

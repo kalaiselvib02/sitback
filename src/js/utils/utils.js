@@ -25,7 +25,27 @@ export const createTextNode = (text) => {
   const el = document.createTextNode(text);
   return el;
 };
+
+export const createButton = (buttonContent, className) => {
+  const button = createElement("button", className);
+  button.textContent = buttonContent;
+  return button;
+};
+
 export const appendGroup = (arr , selector) => {
   arr.forEach(item => selector.appendChild(item))
 }
+
+export const setLocalStorage = (keyName , value) => {
+  localStorage.setItem(keyName , JSON.stringify(value))
+}
+
+export const getLocalStorage = (keyName) => {
+ return localStorage.getItem(keyName) ? JSON.parse(localStorage.getItem(keyName)) : "" 
+}
+
+export const checkUnique = (arr , findMatch) => arr.find(item => item.id === findMatch.id);
+
+export const convertToRupee = (price) =>  parseInt(price).toLocaleString('en-IN'); 
+
 

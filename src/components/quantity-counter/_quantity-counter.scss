@@ -1,0 +1,17 @@
+
+@use "../../scss/variables";
+@use "../../scss/mixins";
+
+
+.quantity-counter{
+    background: variables.$white;
+    width: 80px;
+    @include mixins.flexbox(center , center , 20px);
+    font-size: 0.7rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
+    border-radius: 0.25rem;
+
+    button{
+        padding: 0.35rem;
+    }
+}

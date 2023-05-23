@@ -1,13 +1,26 @@
 @use "variables";
-
+@use "fonts";
+@use "global";
 nav{
     ul{
+        li{
+            position: relative;
+        }
      a{
          font-weight: 400;
-        
-        &.active{
-            background-color: pink;
-        }
+         font-family: variables.$font-primary;
+         
      }
     }
  }
+//  a:nth-child(1) {
+            
+//     &::before{
+//         position: absolute;
+//         content: "";
+//         min-width: 61px;
+//         height: 7px;
+//         background: #000;
+//         bottom: -22px;
+//     }
+// }

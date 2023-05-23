@@ -3,6 +3,7 @@
 @use "../../scss/animation";
 @use "../../scss/mixins";
 @use "../../scss/functions";
+@use "../../scss/fonts";
 
 .products-container {
     padding: 3rem 2.5rem 2rem;
@@ -13,7 +14,7 @@
 .products-list {
     @include mixins.grid();
     .card {
-        @include mixins.card(190px, 100%, 1rem);
+        @include mixins.card(190px, 100%, 1rem , 1rem);
 
         .card-image{
             border-radius: 0px 8px 8px 8px;
@@ -21,23 +22,32 @@
     }
     .card-heading {
         @include mixins.flexbox(space-between, center, false);
-
+        font-family: "Primary-Medium";
         .card-title {
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin : 0.5rem 0;
         }
     }
     .card-body{
         padding-bottom: 0.5rem;
-
+      
         .card-description{
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             line-height: 20px;
             margin-bottom: 0.5rem;
+            color: variables.$text-light;
+            font-family: "Primary-Regular";
+        }
+        .card-gauranteeText{
+            color: variables.$green;
+            text-transform: uppercase;
+            font-family: "Primary-Bold";
+            font-size: 0.7rem;
+           
         }
     }
     .card-footer {
-        border-top: 1px solid variables.$text-light;
+        border-top: 1px solid variables.$light-border;
         @include mixins.flexbox(right, center, false);
     }
 }

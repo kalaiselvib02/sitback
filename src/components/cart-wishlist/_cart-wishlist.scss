@@ -1,0 +1,64 @@
+@use "../../scss/variables";
+@use "../../scss/mixins";
+
+
+.container {
+    position: relative;
+    .cart-wishlist-container{
+        position: fixed;
+        width: 25%;
+        background: variables.$light;
+        height: 100vh;
+        right: 0px;
+        top: 58px;
+        padding: 2.5rem 2rem 0;
+
+        nav{
+            ul{
+                @include mixins.flexbox(false, center, 20px);
+                a{
+                    color: variables.$text-light;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+        .card {
+            @include mixins.card(100px, 100px, 1rem, 0.8rem);
+            background-color: variables.$white;
+            width: 90%;
+            margin: 2rem auto;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
+            height: 65px;
+            border-radius: 0.5rem;
+        }
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            position: relative;
+            img {
+                border-radius: 0.6rem;
+                object-fit: contain;
+                height: inherit;
+                position: relative;
+                top: 10px;
+                left: -20px;
+                height: 80px;
+            }
+        }
+        .card-heading{
+            h2{
+                font-size: 0.8rem;
+            }
+        }
+        .item-right-section{
+            position: absolute;
+            right: 10px;
+            bottom: 0px;
+            top: auto;
+            left: auto;
+        }
+    }
+   
+}
+
