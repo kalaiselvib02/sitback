@@ -1,15 +1,22 @@
 @use "variables";
 
 footer{
-    display: none;
     padding: 1rem 4rem;
-    margin: auto;
     background-color: variables.$grey;
-    position:absolute;
-    bottom:0;
     width:100%;
+    /**Start of responsive scss **/
+    @media only screen and (max-width: variables.$mobile-width) {
+        padding: 1rem 2rem;
+    }
+    /**End of responsive scss **/
     .container{
         width: 90%;
         margin: 0 auto;
+         /**Start of responsive scss **/
+        @media only screen and (max-width: variables.$mobile-width) {
+            width: 100%;
+        }
+        /**End of responsive scss **/
     }
+    
 }

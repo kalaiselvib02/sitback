@@ -1,5 +1,5 @@
 import { APP_CONSTANTS } from "../../../constants/constants.js";
-import { convertToRupee, setLocalStorage } from "../../../js/utils/utils.js";
+import { convertToRupee, setLocalStorage , getLocalStorage} from "../../../js/utils/utils.js";
 
 export const Checkout = {
     calculate : (ordersListArr) => calculatePrice(ordersListArr),
@@ -18,5 +18,6 @@ const calculatePrice = (ordersListArr) => {
 const displayPrice = (totalPrice) => {
     const priceContainer = document.querySelector(".total-amount");
     priceContainer.textContent = totalPrice;
-    setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE , totalPrice)
+    setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE , totalPrice);
+  
 }

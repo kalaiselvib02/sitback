@@ -1,26 +1,27 @@
 @use "variables";
 @use "fonts";
 @use "global";
-nav{
-    ul{
-        li{
-            position: relative;
-        }
-     a{
-         font-weight: 400;
-         font-family: variables.$font-primary;
-         
-     }
+nav {
+  ul {
+    li {
+      position: relative;
     }
- }
-//  a:nth-child(1) {
-            
-//     &::before{
-//         position: absolute;
-//         content: "";
-//         min-width: 61px;
-//         height: 7px;
-//         background: #000;
-//         bottom: -22px;
-//     }
-// }
+    a {
+      font-weight: 400;
+      font-family: variables.$font-primary;
+
+      &.active {
+        &::before {
+          position: absolute;
+          content: "";
+          min-width: 65px;
+          height: 7px;
+          background: #000;
+          bottom: -22px;
+          left: -5px;
+          z-index: 2;
+        }
+      }
+    }
+  }
+}

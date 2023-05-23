@@ -4,25 +4,23 @@ import { Card } from "../../js/shared/cards.js";
 
 
 export const Products = {
-    display: () => displayProductsList()
+   display: (data) => displayProductsList(data),
 }
 
 
-const getProductsList =  async () => {
-    const responseData = await SharedData.fetch.fetchProducts.getList();
-    return responseData
-} 
-
-const displayProductsList =  async () => {
-    const dataList = await getProductsList()
-    dataList.forEach(element => createProductItem(element));
-}
-const createProductItem = (item) => {
+const displayProductsList =   (data) => {
+    const dataList = data;
+    const categoriesListContainer = document.querySelector(".categories-container");
+    categoriesListContainer.classList.add("d-none");
     const productsListContainer = document.querySelector(".products-container .products-list");
+    productsListContainer.innerHTML = "";
+    dataList.forEach(element => createProductItem(element , productsListContainer));
+}
+const createProductItem = (item , wrapper) => {
     const productFragment = new DocumentFragment();
     Card.create.productsList(item , productFragment);
-    productsListContainer.appendChild(productFragment);
-  
+    wrapper.appendChild(productFragment);
+   
 }
 
 

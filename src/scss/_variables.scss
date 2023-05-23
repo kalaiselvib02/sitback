@@ -4,6 +4,8 @@
 
 $white: #fff;
 $black: #000000;
+$mild-black:#383737;
+$dark:#222222;
 $grey:#eeeeee;
 $muted:#888888;
 $green:#008800;
@@ -11,10 +13,14 @@ $text-light:#777575;
 $light:#f7f7f7;
 $light-border:#f4eeee;
 
+
 /** End of variables - colors **/
 
 /** Start of variables - fonts **/
 $font-primary : "Product Sans", sans-serif;
 /** End of variables - fonts **/
 
+/** Start of responsive variables **/
+$mobile-width:767px;
+/** End of responsive variables **/
 

@@ -36,9 +36,15 @@ const decrementQuantity = (itemVal) => {
         const currentIndex = myCart.findIndex(item => item.id == itemVal.cardId);
         const currentItem = myCart[currentIndex]
         currentItem.quantity =  currentItem.quantity - 1;
-        QuantityCounter.update(currentItem)
-        setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCart);
-        Checkout.calculate(myCart)
+        if(currentItem.quantity <= 0) {
+            Cart.remove(myCart[currentIndex] , myCart)
+        }
+        else{
+            QuantityCounter.update(currentItem)
+            setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCart);
+            Checkout.calculate(myCart)
+        }
+        
     }
    
 }
@@ -52,7 +58,6 @@ const updateCounterValue = (item) => {
             const counterValue = quantityCounter.querySelector(".quantity-value");
             counterValue.textContent = item.quantity
         }
-    
     })
     
 }

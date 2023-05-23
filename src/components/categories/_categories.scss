@@ -9,33 +9,69 @@
     padding: 3rem 4rem 2rem;
     width: 90%;
     margin: auto;
+    /**Start of responsive scss **/
+    @media only screen and (max-width: variables.$mobile-width) {
+        padding: 3rem 1rem 2rem;
+        width: 90%;
+    }
+    /**End of responsive scss **/
     .hero-text-container{
         font-family: variables.$font-primary;
         .heading-text{
             font-size: 2.5rem;
             font-weight: 400;
             margin-bottom: 1rem;
+            /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+                font-size: 1.65rem;
+            }
+            /**End of responsive scss **/
         }
         .sub-text{
             font-size: 1.85rem;
             font-weight: 400;
             margin-bottom: 1rem;
+             /**Start of responsive scss **/
+             @media only screen and (max-width: variables.$mobile-width) {
+                font-size: 1.25rem;
+            }
+            /**End of responsive scss **/
         }
     }
     .categories-list{
         margin: 1.5rem 0;
         @include mixins.flexbox(center, center, 40px);
+         /**Start of responsive scss **/
+         @media only screen and (max-width: variables.$mobile-width) {
+            flex-wrap: wrap;
+        }
+        /**End of responsive scss **/
         .card{
             font-family: variables.$font-primary;
             @include mixins.card(500px ,100% , 1.7rem  , 0.9rem);
+            /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+                @include mixins.card(350px ,100% , 1.35rem  , 0.7rem);
+                flex-wrap: wrap;
+            }
+            /**End of responsive scss **/
             .card-title{
                 font-family: "Primary-Regular";
                 margin: 0.8rem 0;
+                 /**Start of responsive scss **/
+                @media only screen and (max-width: variables.$mobile-width) {
+                    @include mixins.card(350px ,100% , 1.35rem  , 0.7rem);
+                    margin: 0.6rem 0;
+                }
+                /**End of responsive scss **/
             }
            .card-description {
             font-family: "Primary-Regular";
             line-height: 22px;
             color: variables.$text-light;
+           }
+           button{
+            margin: 0.8rem 0;
            }
         }
     }

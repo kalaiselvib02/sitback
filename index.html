@@ -16,8 +16,8 @@
     <!--Start of CDN Files-->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'> 
     <!--End of Styles Files-->
     <!--Start of Styles Files-->
     <link rel="stylesheet" href="src/css/styles.css" />
@@ -40,6 +40,19 @@
         </div>
       </header>
       <!--End of Header-->
+        <!--Start of order-list-container-->
+     <div class="orders-list-container d-none">
+      <div class="container">
+        <div class="order-confirmation-message">
+          <h2>Order Confirmation</h2>
+          <p>Thank you for shopping with us. The items will be delivered in 7 days.</p>
+        </div>
+        <div class="orders-list">
+        
+        </div>
+      </div>
+     </div>
+      <!--End of orders-list-container-->
       <!-- Start of categories-container-->
       <div class="categories-container">
         <div class="hero-text-container">
@@ -49,31 +62,35 @@
         <div class="categories-list"></div>
       </div>
       <!-- End of categories-container-->
-      <div class="container d-none">
+      <!---->
+      <div class="container products-screen">
         <!--Start of products-container-->
         <div class="products-container">
           <div class="products-list"></div>
         </div>
         <!--End of products-container-->
-        <!--Start of order-details-container-->
+        <!--Start of cart-wishlist-container-->
         <div class="cart-wishlist-container d-none">
           <nav>
-            <ul>
-              <li><a href="#cartContainer">MY CART</a></li>
-              <li><a href="#wishListContainer">MY WISHLIST</a></li>
+            <ul class="tabs">
+              <li  class="tab"><a  data-tab="cartContainer">MY CART</a></li>
+              <li  class="tab" ><a  data-tab="wishListContainer">MY WISHLIST</a></li>
             </ul>
           </nav>
           <div>
-            <div class="cart-container d-none" id="cartContainer">
+            <div class="cart-container tab-content" id="cartContainer">
              
             </div>
-            <div class="wishlist-container d-none" id="wishListContainer">
+            <div class="wishlist-container tab-content" id="wishListContainer">
           
             </div>
-            <div class="checkout-container d-none">
+            <div class="checkout-container">
               <div>
                 <p class="container-heading text-sm">TOTAL AMOUNT</p>
                 <p class="total-amount"></p>
+              </div>
+              <div class="button-container">
+                <button class="btn btn-sm btn-primary place-order">PLACE ORDER</button>
               </div>
             </div>
           </div>

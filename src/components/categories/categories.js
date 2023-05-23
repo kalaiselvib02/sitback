@@ -4,7 +4,8 @@ import { Card } from "../../js/shared/cards.js";
 
 export const Categories = {
     get : () => getCategoriesList(),
-    display: () => displayCategoryList()
+    display: () => displayCategoryList(),
+    navigate : () => navigateToProduct()
 }
 
 
@@ -21,11 +22,21 @@ const createCategoryItem = (item) => {
     const categoriesListContainer = document.querySelector(".categories-container .categories-list");
     const categoryFragment = new DocumentFragment();
     Card.create.categoriesList(item , categoryFragment);
-    categoriesListContainer.appendChild(categoryFragment)
+    categoriesListContainer.appendChild(categoryFragment);
+    Categories.navigate();
 }
 
+const navigateToProduct = () => {
+    const navigationBtns = document.querySelectorAll(".btn-shop-now");
+    navigationBtns.forEach((button) => {
+        button.addEventListener('click', () => getProductId(button))
+    });
+}
 
-
+const getProductId = (button) => {
+const id = button.getAttribute("id");
+SharedData.fetch.fetchProducts.getList(id);
+}
 
 
 

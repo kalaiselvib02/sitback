@@ -48,4 +48,8 @@ export const checkUnique = (arr , findMatch) => arr.find(item => item.id === fin
 
 export const convertToRupee = (price) =>  parseInt(price).toLocaleString('en-IN'); 
 
+export const removeActiveClass = (arr) => {
+  arr.forEach(item => item.classList.remove("active"))
+}
+
 

@@ -1,0 +1,86 @@
+@use "../../scss/variables";
+@use "../../scss/common";
+@use "../../scss/animation";
+@use "../../scss/mixins";
+@use "../../scss/functions";
+@use "../../scss/fonts";
+
+.orders-list-container {
+    padding: 3rem 4rem 2rem;
+    background-color: variables.$light;
+     /**Start of responsive scss **/
+     @media only screen and (max-width: variables.$mobile-width) {
+        padding: 3rem 1rem 2rem;
+    }
+    /**End of responsive scss **/
+    .container{
+        width: 90%;
+        margin: auto;
+    }
+    .order-confirmation-message{
+        h2{
+            font-family: Primary-Medium;
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+                font-size: 1rem;
+            }
+            /**End of responsive scss **/
+        }
+        p{
+            font-family: Primary-Regular;
+            color: variables.$dark;
+            font-size: 1.1rem;
+            margin: 1rem 0 1.5rem;
+             /**Start of responsive scss **/
+             @media only screen and (max-width: variables.$mobile-width) {
+                font-size: 0.9rem;
+            }
+            /**End of responsive scss **/
+        }
+    }
+}
+
+.orders-list {
+    @include mixins.grid-auto-fit(40px);
+    overflow-x: scroll;
+    .card {
+        width: 380px;
+        @include mixins.card(190px, 100%, 0.85rem , 1rem);
+           /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+                width: auto;
+                
+            }
+            /**End of responsive scss **/
+        .card-image{
+            border-radius: 0px 8px 8px 8px;
+        }
+    }
+    .card-heading {
+        @include mixins.flexbox(space-between, center, false);
+        font-family: "Primary-Medium";
+        .card-title {
+            margin : 0.5rem 0;
+        }
+        .card-price-container {
+            @include mixins.flexbox(false, center, 5px);
+            font-size: 0.85rem;
+            p{
+                font-size: 0.85rem;
+            }
+        }
+    }
+    .card-body{
+        padding-bottom: 0.5rem;
+      
+        .card-description{
+            font-size: 0.7rem;
+            line-height: 20px;
+            margin-bottom: 0.5rem;
+            color: variables.$text-light;
+            font-family: "Primary-Regular";
+        }
+    }
+}

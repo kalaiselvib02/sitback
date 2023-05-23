@@ -1,9 +1,13 @@
 import { SharedData } from "./shared/shared.js";
 import { Header } from "../components/header/header.js";
 import { Categories } from "../components/categories/categories.js";
-import { Products } from "../components/products/products.js";
+import { Orders } from "../components/orders/orders.js";
+
+
 
 SharedData.fetch.fetchCategories.getNames();
-Header.navigation();
+Header.navigation.create();
 Categories.display();
-Products.display();
+Orders.handleClick();
+
+

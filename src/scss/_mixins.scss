@@ -31,15 +31,18 @@
    p {
     font-size: $text-size;
    }
-   button{
-    margin: 0.8rem 0;
-   }
-   
 }
 
 
-@mixin grid() {
+@mixin grid($col-split , $grid-gap) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 40px;
+    grid-template-columns: repeat($col-split, 1fr);
+    grid-gap: $grid-gap;
+}
+
+@mixin  grid-auto-fit ($grid-gap){
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(350px, minmax(min-content, 1fr));
+    grid-gap: $grid-gap;
 }

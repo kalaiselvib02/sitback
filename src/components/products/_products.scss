@@ -8,14 +8,31 @@
 .products-container {
     padding: 3rem 2.5rem 2rem;
     width: 100%;
-    margin: auto;
+    &.three-col-layout{
+        width: 75%;
+        height: 90vh;
+        overflow-y: scroll;
+    }
+   
 }
 
 .products-list {
-    @include mixins.grid();
+    @include mixins.grid(4 , 40px);
+     /**Start of responsive scss **/
+        @media only screen and (max-width: variables.$mobile-width) {
+            @include mixins.grid(1 , 40px);
+        }
+    /**End of responsive scss **/
+    &.three-col-layout{
+        @include mixins.grid(3 , 40px);
+         /**Start of responsive scss **/
+         @media only screen and (max-width: variables.$mobile-width) {
+            @include mixins.grid(1 , 40px);
+        }
+    /**End of responsive scss **/
+    }
     .card {
-        @include mixins.card(190px, 100%, 1rem , 1rem);
-
+        @include mixins.card(190px, 100%, 0.85rem , 1rem);
         .card-image{
             border-radius: 0px 8px 8px 8px;
         }
@@ -24,8 +41,14 @@
         @include mixins.flexbox(space-between, center, false);
         font-family: "Primary-Medium";
         .card-title {
-            font-size: 0.9rem;
             margin : 0.5rem 0;
+        }
+        .card-price-container {
+            @include mixins.flexbox(false, center, 5px);
+            font-size: 0.85rem;
+            p{
+                font-size: 0.85rem;
+            }
         }
     }
     .card-body{
@@ -38,16 +61,24 @@
             color: variables.$text-light;
             font-family: "Primary-Regular";
         }
-        .card-gauranteeText{
+        .card-gaurantee-container{
+            @include mixins.flexbox(false, center, 5px);
+            font-size: 0.85rem;
             color: variables.$green;
-            text-transform: uppercase;
-            font-family: "Primary-Bold";
-            font-size: 0.7rem;
-           
+            .card-gauranteeText{
+                text-transform: uppercase;
+                font-family: "Primary-Bold";
+                font-size: 0.7rem;
+               
+            }
         }
+       
     }
     .card-footer {
         border-top: 1px solid variables.$light-border;
         @include mixins.flexbox(right, center, false);
+        button{
+            margin: 0.8rem 0;
+           }
     }
 }
