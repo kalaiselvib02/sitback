@@ -3,100 +3,122 @@
 
 .container {
   position: relative;
-  .cart-wishlist-container {
-    position: fixed;
-    width: 25%;
-    background: variables.$light;
-    height: 92vh;
-    right: 0px;
-    top: 58px;
+}
+.cart-wishlist-container {
+  position: fixed;
+  width: 25%;
+  background: variables.$light;
+  height: 92vh;
+  right: 0px;
+  top: 58px;
+   /**Start of responsive scss **/
+   @media only screen and (max-width: variables.$mobile-width) {
+    width: 100%;
+  }
+  /**End of responsive scss **/
+.hide-cart-wishlist-container{
+  display: none;
+  /**Start of responsive scss **/
+  @media only screen and (max-width: variables.$mobile-width) {
+    display: block;
+    float: right;
+    padding: 1rem 1rem 0.5rem;
 
-    nav {
-      padding: 2.5rem 2rem 0;
-      ul {
-        @include mixins.flexbox(false, center, 20px);
-        a {
-          color: variables.$text-light;
-          font-size: 0.9rem;
+  }
+  /**End of responsive scss **/
+}
+  nav {
+    padding: 2.5rem 2rem 0;
+    ul {
+      @include mixins.flexbox(false, center, 30px);
+      a {
+        color: variables.$text-light;
+        font-size: 0.9rem;
+        font-family: "Primary-Light";
+        &.active{
+          font-family: "Primary-Medium";
+          color: variables.$black;
+          &::before{
+            min-width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0px;
+          }
         }
       }
-    }
-    .card {
-      @include mixins.card(100px, 100px, 0.7rem, 0.65rem);
-      background-color: variables.$white;
-      width: 90%;
-      margin: 2rem auto;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
-      height: 65px;
-      border-radius: 0.5rem;
-    }
-    .card-details {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      align-items: center;
-      position: relative;
-      img {
-        border-radius: 0.6rem;
-        object-fit: contain;
-        height: inherit;
-        position: relative;
-        top: 10px;
-        left: -20px;
-        height: 80px;
-      }
-      .btn-remove-wishlist-container{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-
-        .fa-solid{
-            font-size: 0.7rem;
-            color: variables.$text-light;
-        }
-    }
-    }
-    .card-heading {
-      font-family: Primary-Regular;
-      h2 {
-        color: variables.$mild-black;
-      }
-      .card-price-container {
-        margin: 0.6rem 0;
-        .fa {
-          font-size: 0.65rem;
-        }
-        @include mixins.flexbox(false, center, 5px);
-      }
-    }
-    .item-right-section {
-      position: absolute;
-      right: 10px;
-      bottom: 0px;
-      top: auto;
-      left: auto;
-    }
-    .cart-container,.wishlist-container{
-      padding: 2.5rem 2rem 0;
     }
   }
+  .card {
+    @include mixins.card(100px, 100px, 0.7rem, 0.65rem);
+    background-color: variables.$white;
+    width: 90%;
+    margin: 2rem auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
+    height: 65px;
+    border-radius: 0.5rem;
+  }
+  .card-details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    position: relative;
+    img {
+      border-radius: 0.6rem;
+      object-fit: contain;
+      height: inherit;
+      position: relative;
+      top: 10px;
+      left: -20px;
+      height: 80px;
+    }
+    .btn-remove-wishlist-container{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+
+      .fa-solid{
+          font-size: 0.7rem;
+          color: variables.$text-light;
+      }
+  }
+  }
+  .card-heading {
+    font-family: Primary-Regular;
+    h2 {
+      color: variables.$mild-black;
+    }
+    .card-price-container {
+      margin: 0.6rem 0;
+      .fa {
+        font-size: 0.65rem;
+      }
+      @include mixins.flexbox(false, center, 5px);
+    }
+  }
+  .item-right-section {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    top: auto;
+    left: auto;
+  }
+  .user-prefered-items{
+    height: 80vh;
+    overflow: scroll;
+    .cart-container,.wishlist-container{
+      padding: 0.5rem 2rem;
+    }
+  }
+  
 }
-
-
-
 .tabs li{
   display: inline-block;
 }
-
-.tabs li.active{
-  background: #e67e22;
-  color: #FFF;
-}
-
 .tab-content{
   display: none;
   line-height:1.4;
+  &.active{
+    display: inherit;
+  }
 }
 
-.tab-content.active{
-  display: inherit;
-}

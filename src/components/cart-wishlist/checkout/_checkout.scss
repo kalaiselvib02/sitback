@@ -14,4 +14,16 @@
         font-size: 0.7rem;
         font-family: variables.$font-primary;
     }
+    .total-price{
+        font-family: Primary-Light;
+        @include mixins.flexbox(false , center , 5px);
+        font-size: 1rem;
+        .fa{
+            font-size: 0.8rem;
+        }
+        .total-amount{
+            margin: 5px 0;
+        }
+        
+    }
 }

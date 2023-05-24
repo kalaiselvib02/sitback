@@ -5,6 +5,8 @@ import { Header } from "../../components/header/header.js";
 import { Cart } from "../../components/cart-wishlist/cart/cart.js";
 import { getLocalStorage } from "../utils/utils.js";
 import { Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
+import { CartWishlist } from "../../components/cart-wishlist/cart-wishlist.js";
+import { Checkout } from "../../components/cart-wishlist/checkout/checkout.js";
 export const SharedData = {
     fetch : {
         fetchCategories : {
@@ -48,10 +50,11 @@ const getCategoryNames = async () => {
 const getProductsList = async (catId) => {
     const productUrl = APP_CONSTANTS.FETCH_URL.PRODUCT + catId
     const dataList = await getDataFromService(productUrl);
-    Header.setActive(catId);
     Products.display(dataList);
     populateCart()
-    populateWishlist()
+    populateWishlist();
+    Checkout.populate()
+    CartWishlist.close();
     const footer = document.querySelector("footer");
     footer.classList.add("d-none");
 }
@@ -62,6 +65,7 @@ const parentSelector = document.querySelector(".cart-container");
 parentSelector.innerHTML = "";
 if(data) Cart.populateCart(data);
 }
+
 const populateWishlist = () => {
     const data = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST);
     const parentSelector = document.querySelector(".wishlist-container");

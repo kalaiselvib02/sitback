@@ -3,7 +3,8 @@ import { convertToRupee, setLocalStorage , getLocalStorage} from "../../../js/ut
 
 export const Checkout = {
     calculate : (ordersListArr) => calculatePrice(ordersListArr),
-    display : (totalPrice) => displayPrice(totalPrice)
+    display : (totalPrice) => displayPrice(totalPrice),
+    populate : () => populatePrice()
 }
 
 const calculatePrice = (ordersListArr) => {
@@ -12,7 +13,7 @@ const calculatePrice = (ordersListArr) => {
         totalPrice +=  (element.quantity * parseInt(element.price))
     });
     totalPrice = convertToRupee(totalPrice)
-  Checkout.display(totalPrice)
+    Checkout.display(totalPrice)
 }
 
 const displayPrice = (totalPrice) => {
@@ -20,4 +21,12 @@ const displayPrice = (totalPrice) => {
     priceContainer.textContent = totalPrice;
     setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE , totalPrice);
   
+}
+
+const populatePrice = () => {
+    const currentPrice = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE);
+    if(currentPrice) {
+        const priceContainer = document.querySelector(".total-amount");
+        priceContainer.textContent = currentPrice;
+    }
 }

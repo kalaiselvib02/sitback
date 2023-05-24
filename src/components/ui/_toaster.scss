@@ -1,0 +1,84 @@
+
+@use "../../scss/variables";
+@use "../../scss/mixins";
+@use "../../scss/fonts";
+.toast {
+	position: absolute;
+	top: 25px;
+	right: 30px;
+	border-radius: 12px;
+	background: variables.$white;
+	padding: 10px 35px 20px 25px;
+	box-shadow: 0 5px 40px rgba(0,0,0,0.1);
+	border-left: 6px solid variables.$black;
+	overflow: hidden;
+	transform: translateX(calc(100% + 30px));
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+	.toast-content {
+		@include mixins.flexbox(false , center , false);
+	}
+	.progress {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 3px;
+		width: 100%;
+		background: variables.$light;
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			background: variables.$dark;
+		}
+	}
+}
+.toast.active {
+	transform: translateX(0%);
+	~ {
+		button {
+			pointer-events: none;
+		}
+	}
+}
+.toast-content {
+	.check {
+		@include mixins.flexbox(center , center , false);
+		height: 35px;
+		width: 35px;
+		background-color: lightblue;
+		color: red;
+		font-size: 15px;
+		border-radius: 50%;
+	}
+	.message {
+		@include mixins.flexbox(false , false , false);
+		margin: 0px 20px;
+		flex-direction: column;
+	}
+}
+.message {
+	color: variables.$dark;
+	.text.text-1 {
+		font-size: 0.9rem;
+		font-family: Primary-Medium;
+		margin-bottom: 0.7rem;
+	}
+	.text.text-2 {
+		font-size: 0.8rem;
+		font-weight: 400;
+		font-family: Primary-Regular;
+	}
+}
+.progress.active {
+	&:before {
+		animation: progress 5s linear forwards;
+	}
+}
+@keyframes progress {
+	100% {
+		right: 100%;
+	}
+}

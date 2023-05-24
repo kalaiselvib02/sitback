@@ -11,13 +11,17 @@
     <!--End of meta tags-->
     <title>Sitback</title>
     <!--Start of fav icon-->
-    <!-- <link rel="icon" href="/src/assets/images/favicon_io/favicon.ico" /> -->
+    <link rel="icon" href="/src/assets/images/furniture.png" />
     <!--End of fav icon-->
     <!--Start of CDN Files-->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'> 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
     <!--End of Styles Files-->
     <!--Start of Styles Files-->
     <link rel="stylesheet" href="src/css/styles.css" />
@@ -40,18 +44,19 @@
         </div>
       </header>
       <!--End of Header-->
-        <!--Start of order-list-container-->
-     <div class="orders-list-container d-none">
-      <div class="container">
-        <div class="order-confirmation-message">
-          <h2>Order Confirmation</h2>
-          <p>Thank you for shopping with us. The items will be delivered in 7 days.</p>
-        </div>
-        <div class="orders-list">
-        
+      <!--Start of order-list-container-->
+      <div class="orders-list-container d-none">
+        <div class="container">
+          <div class="order-confirmation-message">
+            <h2>Order Confirmation</h2>
+            <p>
+              Thank you for shopping with us. The items will be delivered in 7
+              days.
+            </p>
+          </div>
+          <div class="orders-list"></div>
         </div>
       </div>
-     </div>
       <!--End of orders-list-container-->
       <!-- Start of categories-container-->
       <div class="categories-container">
@@ -71,26 +76,37 @@
         <!--End of products-container-->
         <!--Start of cart-wishlist-container-->
         <div class="cart-wishlist-container d-none">
+          <div class="hide-cart-wishlist-container">
+            <button class="btn btn-close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
           <nav>
             <ul class="tabs">
-              <li  class="tab"><a  data-tab="cartContainer">MY CART</a></li>
-              <li  class="tab" ><a  data-tab="wishListContainer">MY WISHLIST</a></li>
+              <li class="tab"><a data-tab="cartContainer">MY CART</a></li>
+              <li class="tab">
+                <a data-tab="wishListContainer">MY WISHLIST</a>
+              </li>
             </ul>
           </nav>
           <div>
-            <div class="cart-container tab-content" id="cartContainer">
-             
-            </div>
-            <div class="wishlist-container tab-content" id="wishListContainer">
-          
+            <div class="user-prefered-items">
+              <div class="cart-container tab-content" id="cartContainer"></div>
+              <div
+                class="wishlist-container tab-content"
+                id="wishListContainer"
+              ></div>
             </div>
             <div class="checkout-container">
               <div>
                 <p class="container-heading text-sm">TOTAL AMOUNT</p>
+               <div class="total-price">
+                <i class="fa fa-inr"></i>
                 <p class="total-amount"></p>
+               </div>
               </div>
               <div class="button-container">
-                <button class="btn btn-sm btn-primary place-order">PLACE ORDER</button>
+                <button class="btn btn-sm btn-primary place-order">
+                  PLACE ORDER
+                </button>
               </div>
             </div>
           </div>
@@ -104,6 +120,19 @@
         </div>
       </footer>
       <!--End of footer-->
+      <!--Start of toaster-->
+      <div class="progress"></div>
+    </div>
+    <div class="toast">
+      <div class="toast-content">
+        <i class="fas fa-solid fa-check check"></i>
+        <div class="message">
+          <span class="text text-1 status-text"></span>
+          <span class="text text-2 message-text"></span>
+        </div>
+      </div>
+      <div class="progress"></div>
+      <!--End of toaster-->
     </div>
     <!--End of Wrapper-->
     <!--Start of external JS Files-->

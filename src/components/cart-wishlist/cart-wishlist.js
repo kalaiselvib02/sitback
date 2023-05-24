@@ -2,35 +2,44 @@ import { removeActiveClass } from "../../js/utils/utils.js";
 
 export const CartWishlist = {
     setActive : (dataAttr) => setActiveLinkTab(dataAttr),
+    close : () => closeCartWishListContainer() 
 }
 
 const setActiveLinkTab = (dataAttr) => {
-    console.log(dataAttr)
         const navLinkNodes = document.querySelectorAll(".tabs li a");
         if(navLinkNodes){
-            test(dataAttr , navLinkNodes)
-            navLinkNodes.forEach((tabLink) => {
-                tabLink.addEventListener('click', () => test( dataAttr, navLinkNodes))
-            });
-        }
-        
+            activeTabLink(dataAttr , navLinkNodes)
+        } 
 }
 
-const test = (dataAttr , arrNodes) => {
-    let nodes = Array.from(arrNodes);
-    removeActiveClass(nodes)
-    let testfed = nodes.find(item => item.getAttribute("data-tab") == dataAttr);
-    testfed.classList.add("active");
+const activeTabLink = (dataAttr , arrNodes) => {
+    const navNodes = Array.from(arrNodes);
+    removeActiveClass(navNodes)
+    let currentNavItem = navNodes.find(item => item.getAttribute("data-tab") == dataAttr);
+    currentNavItem.classList.add("active");
     const allTabs = document.querySelectorAll(".tab-content");
     removeActiveClass(allTabs)
     const findCurrentTabContent = document.getElementById(dataAttr);
     findCurrentTabContent.classList.add("active")
 }
 
-
-
-const setActiveTab = () => {
-  const allTabs = document.querySelectorAll(".tab-content");
-  removeActiveClass(allTabs)
- 
+const clickTab = () => {
+    const navLinkNodes = document.querySelectorAll(".tabs li a");
+    navLinkNodes.forEach((tabLink) => {
+        tabLink.addEventListener('click', () => {
+            const dataAttr = tabLink.getAttribute("data-tab");
+            activeTabLink( dataAttr, navLinkNodes)
+        })
+    });
 }
+
+const closeCartWishListContainer = () => {
+    const closeButton = document.querySelector(".cart-wishlist-container .btn-close");
+    closeButton.addEventListener("click" , () => {
+        const parentSelector = closeButton.parentElement.parentElement;
+        parentSelector.classList.add("d-none")
+    })
+}
+
+
+clickTab()

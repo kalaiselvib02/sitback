@@ -19,14 +19,16 @@ const createQuantityCounter = (itemDetails , fragment) => {
     const quantity = createElement("p" , "quantity-value");
     quantity.textContent = itemDetails.cardQuantity;
     const addQuantityBtn = createButton("+" , "add-quantity");
-    addQuantityBtn.addEventListener("click" , QuantityCounter.increment)
+    // addQuantityBtn.addEventListener("click" , () => QuantityCounter.increment)
     appendGroup([decrementQuantityBtn , quantity , addQuantityBtn] , quantityCounter)
     fragment.appendChild(quantityCounter);
     return fragment
 }
 
 const incrementQuantity = (item , arr) => {
+console.log(item)
 item.quantity = item.quantity + 1;
+QuantityCounter.update(item)
 setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , arr)
 }
 
@@ -34,19 +36,16 @@ const decrementQuantity = (itemVal) => {
     const myCart = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
     if(myCart) {
         const currentIndex = myCart.findIndex(item => item.id == itemVal.cardId);
-        const currentItem = myCart[currentIndex]
+        const currentItem = myCart[currentIndex];
         currentItem.quantity =  currentItem.quantity - 1;
+        setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCart);
+        QuantityCounter.update(currentItem);
+        console.log(myCart)
+        Checkout.calculate(myCart);
         if(currentItem.quantity <= 0) {
             Cart.remove(myCart[currentIndex] , myCart)
-        }
-        else{
-            QuantityCounter.update(currentItem)
-            setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCart);
-            Checkout.calculate(myCart)
-        }
-        
+        } 
     }
-   
 }
 
 const updateCounterValue = (item) => {

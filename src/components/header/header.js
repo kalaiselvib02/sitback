@@ -38,13 +38,21 @@ const createNavigationItem = (listItem , fragment) => {
 
 const setActiveNavItem = (id) => {
 let navLinkNodes = document.querySelectorAll(".nav-link");
-navLinkNodes = Array.from(navLinkNodes);
-const currentNavLink = navLinkNodes.find(navLink => navLink.textContent == id);
-if(currentNavLink) currentNavLink.classList.add("active")
+if(navLinkNodes) {
+    let arr  = Array.from(navLinkNodes);
+    const currentNavLink = arr.find( navLink => navLink.textContent.toLowerCase() == id.toLowerCase());
+    currentNavLink.classList.add("active")   
+}
 }
 
+
 const navigateToCategoryProducts = (catId) => {
-console.log(catId)
+const ordersContainer = document.querySelector(".orders-list-container");
+ordersContainer.classList.add("d-none");
+const categoriesContainer = document.querySelector(".categories-container");
+categoriesContainer.classList.add("d-none");
+const productsScreen = document.querySelector(".products-screen ");
+productsScreen.classList.remove("d-none");
 SharedData.fetch.fetchProducts.getList(catId.toLowerCase());
 let navLinkNodes = document.querySelectorAll(".nav-link");
 navLinkNodes = Array.from(navLinkNodes);

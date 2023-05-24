@@ -26,5 +26,10 @@ export const APP_CONSTANTS = {
       TOTAL_PRICE : "totalPrice",
 
     },
+    TOASTER:{
+      TIME_INTERVAL : 2500,
+      SUCCESS:"Success",
+      ERROR:"Error",
+    }
   };
   

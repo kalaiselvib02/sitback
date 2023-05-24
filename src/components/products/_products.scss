@@ -11,7 +11,13 @@
     &.three-col-layout{
         width: 75%;
         height: 90vh;
+        overflow-x: hidden;
         overflow-y: scroll;
+         /**Start of responsive scss **/
+         @media only screen and (max-width: variables.$mobile-width) {
+            width: 100%;
+         }
+        /**End of responsive scss **/
     }
    
 }
@@ -22,14 +28,14 @@
         @media only screen and (max-width: variables.$mobile-width) {
             @include mixins.grid(1 , 40px);
         }
-    /**End of responsive scss **/
+        /**End of responsive scss **/
     &.three-col-layout{
         @include mixins.grid(3 , 40px);
          /**Start of responsive scss **/
          @media only screen and (max-width: variables.$mobile-width) {
             @include mixins.grid(1 , 40px);
         }
-    /**End of responsive scss **/
+        /**End of responsive scss **/
     }
     .card {
         @include mixins.card(190px, 100%, 0.85rem , 1rem);

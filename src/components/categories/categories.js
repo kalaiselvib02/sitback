@@ -1,6 +1,7 @@
 
 import { SharedData } from "../../js/shared/shared.js";
 import { Card } from "../../js/shared/cards.js";
+import { Header } from "../header/header.js";
 
 export const Categories = {
     get : () => getCategoriesList(),
@@ -35,6 +36,7 @@ const navigateToProduct = () => {
 
 const getProductId = (button) => {
 const id = button.getAttribute("id");
+Header.setActive(id);
 SharedData.fetch.fetchProducts.getList(id);
 }
 

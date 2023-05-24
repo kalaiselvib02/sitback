@@ -20,7 +20,7 @@ export const Card = {
   },
   remove:{
     cartList: (id) => removeCartCard(id),
-    // wishList : (item , fragment) => removeWishListCard(item , fragment),
+    wishList : (id) => removeWishListCard(id),
   },
 };
 
@@ -196,6 +196,11 @@ const removeCartCard = (id) => {
    if(currentElement) currentElement.parentNode.parentNode.remove()
    })
 }
+const removeWishListCard = (id) => {
+  const allWishListItemNodes = document.querySelectorAll(".wishlist-container .card");
+  const currentElement = document.querySelector(`.card[data-index='${id}']`)
+  if(currentElement) currentElement.remove()
+}
 
 const createWishListCard  = (item, fragment) => {
   const cardItemDetails = {
@@ -214,12 +219,15 @@ const createWishListCard  = (item, fragment) => {
 
 const wishListCard = (itemDetails , fragment) => {
   const card = cartWishlistCard(itemDetails , fragment);
+  card.setAttribute("data-index" , itemDetails.cardId);
   const cardDetails = card.querySelector(".card-details")
   const addToCartBtn = createButton(
     APP_CONSTANTS.ADD_TO_CART,
     "btn btn-xs btn-primary btn-addToCart item-right-section"
   );
+  addToCartBtn.addEventListener("click" , () => Wishlist.move(itemDetails.cardId));
   const deletWishListItem = createButton("" , "btn btn-remove-wishlist-container");
+  deletWishListItem.addEventListener("click" , () => Wishlist.remove(itemDetails.cardId))
   const deleteIcon = createElement("i" , "fa-solid fa-trash");
   deletWishListItem.appendChild(deleteIcon)
   appendGroup([addToCartBtn , deletWishListItem], cardDetails);
@@ -317,7 +325,7 @@ const createGauranteeText = (gauranteeYears) => {
 
 const createQuantity = (quantity) => {
   const quantityVal = createElement("p", "card-description");
-  quantityVal.textContent = APP_CONSTANTS.ORDER_CONFIRMATION.QUANTITY + " :" + quantity;
+  quantityVal.textContent = APP_CONSTANTS.ORDER_CONFIRMATION.QUANTITY + " : " + quantity;
   return quantityVal;
 }
 

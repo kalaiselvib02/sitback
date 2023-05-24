@@ -1,6 +1,6 @@
 import { APP_CONSTANTS } from "../../constants/constants.js";
 import { Card } from "../../js/shared/cards.js";
-import { getLocalStorage } from "../../js/utils/utils.js";
+import { getLocalStorage, removeActiveClass } from "../../js/utils/utils.js";
 import { Checkout } from "../cart-wishlist/checkout/checkout.js";
 
 export const Orders = {
@@ -21,10 +21,12 @@ const displayOrderList = () => {
     if(myOrders){
         myOrders.forEach(element => createOrderListItem(element));
     }
+    const allNavLinks = document.querySelectorAll("header ul .nav-link");
+    removeActiveClass(allNavLinks);
     const ordersContainer = document.querySelector(".orders-list-container");
     ordersContainer.classList.remove("d-none")
     const catergoriesContainer = document.querySelector(".categories-container");
-    catergoriesContainer.classList.remove("d-none")
+    catergoriesContainer.classList.remove("d-none");
 }
 
 const createOrderListItem = (item) => {
@@ -33,3 +35,4 @@ const createOrderListItem = (item) => {
     Card.create.ordersList(item, orderFragment);
     orderListContainer.appendChild(orderFragment);
   };
+
