@@ -1,8 +1,11 @@
-import { removeActiveClass } from "../../js/utils/utils.js";
+import { removeActiveClass , checkDataLength , hideElement} from "../../js/utils/utils.js";
+import { APP_CONSTANTS } from "../../constants/constants.js";
+import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 
 export const CartWishlist = {
     setActive : (dataAttr) => setActiveLinkTab(dataAttr),
-    close : () => closeCartWishListContainer() 
+    close : () => closeCartWishListContainer() ,
+    onLoad : () => checkEmptyListOnLoad()
 }
 
 const setActiveLinkTab = (dataAttr) => {
@@ -40,6 +43,8 @@ const closeCartWishListContainer = () => {
         parentSelector.classList.add("d-none")
     })
 }
+
+
 
 
 clickTab()

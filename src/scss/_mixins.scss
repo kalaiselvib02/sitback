@@ -43,6 +43,6 @@
 @mixin  grid-auto-fit ($grid-gap){
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(350px, minmax(min-content, 1fr));
+    grid-template-columns: auto 1fr;
     grid-gap: $grid-gap;
 }

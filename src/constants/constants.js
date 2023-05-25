@@ -1,4 +1,8 @@
 export const APP_CONSTANTS = {
+    CATEGORIES:{
+      HERO_TEXT : "Your Home, With Love", 
+      SUB_TEXT : "Come Choose from millions of products"
+    },
     FETCH_URL: {
       CATEGORIES : "https://jsonmockserver.vercel.app/api/shopping/furniture/categories",
       PRODUCT:"https://jsonmockserver.vercel.app/api/shopping/furniture/products?category="
@@ -30,6 +34,7 @@ export const APP_CONSTANTS = {
       TIME_INTERVAL : 2500,
       SUCCESS:"Success",
       ERROR:"Error",
-    }
+    },
+   
   };
   

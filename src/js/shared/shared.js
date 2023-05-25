@@ -1,12 +1,12 @@
 import { APP_CONSTANTS } from "../../constants/constants.js";
 import { fetchData } from "../services/fetchService.js";
 import { Products } from "../../components/products/products.js";
-import { Header } from "../../components/header/header.js";
-import { Cart } from "../../components/cart-wishlist/cart/cart.js";
-import { getLocalStorage } from "../utils/utils.js";
-import { Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
+import { Cart , toggleCheckoutContainer, toggleMessageContainer } from "../../components/cart-wishlist/cart/cart.js";
+import { checkDataLength, emptyListMessage, getLocalStorage } from "../utils/utils.js";
+import { hideCheckout, Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
 import { CartWishlist } from "../../components/cart-wishlist/cart-wishlist.js";
 import { Checkout } from "../../components/cart-wishlist/checkout/checkout.js";
+import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 export const SharedData = {
     fetch : {
         fetchCategories : {
@@ -59,16 +59,32 @@ const getProductsList = async (catId) => {
     footer.classList.add("d-none");
 }
 
-const populateCart = () => {
-const data = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+export const populateCart = () => {
+const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+CartWishlist.setActive("cartContainer");
 const parentSelector = document.querySelector(".cart-container");
 parentSelector.innerHTML = "";
-if(data) Cart.populateCart(data);
+if(myCartArr.length) {
+    Cart.populateCart(myCartArr);
+}
+else{
+    toggleMessageContainer(true , parentSelector)
 }
 
-const populateWishlist = () => {
-    const data = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST);
+
+}
+
+export const populateWishlist = () => {
+    const wishListArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST);
     const parentSelector = document.querySelector(".wishlist-container");
     parentSelector.innerHTML = "";
-    if(data) Wishlist.populateWishlist(data);
+    if(wishListArr.length) {
+        Wishlist.populateWishlist(wishListArr);
+    }
+    else{
+        checkDataLength(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST , MESSAGE_CONSTANTS.EMPTY_LIST.WISH_LIST , parentSelector)
+        toggleMessageContainer(true , parentSelector)
+    }
+    
 }
+

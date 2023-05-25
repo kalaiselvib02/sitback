@@ -52,4 +52,24 @@ export const removeActiveClass = (arr) => {
   arr.forEach(item => item.classList.remove("active"))
 }
 
+export const checkDataLength = (key , text , wrapper) => {
+  const dataArr = getLocalStorage(key);
+  if(!dataArr.length) {
+    emptyListMessage(text,wrapper)
+  }
+}
 
+export const emptyListMessage = (text , wrapper) => {
+  const messageContainer = createElement("div" , "message-container");
+  const messageElement = document.createElement("p" , "empty-list");
+  messageElement.textContent = text;
+  messageContainer.appendChild(messageElement);
+  const checkExisting = document.querySelector(".message-container");
+  if(!checkExisting) wrapper.appendChild(messageContainer)
+ 
+}
+
+export const hideElement = (selector) => {
+  selector.classList.add("d-none");
+  }
+  

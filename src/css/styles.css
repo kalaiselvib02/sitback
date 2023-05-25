@@ -124,32 +124,6 @@ nav ul a.active::before {
   z-index: 2;
 }
 
-footer {
-  display: none;
-  padding: 1rem 4rem;
-  background-color: #eeeeee;
-  width: 100%;
-  font-family: Primary-Light;
-  /**Start of responsive scss **/
-  /**End of responsive scss **/
-}
-@media only screen and (max-width: 767px) {
-  footer {
-    padding: 1rem 2rem;
-  }
-}
-footer .container {
-  width: 90%;
-  margin: 0 auto;
-  /**Start of responsive scss **/
-  /**End of responsive scss **/
-}
-@media only screen and (max-width: 767px) {
-  footer .container {
-    width: 100%;
-  }
-}
-
 .toast {
   position: absolute;
   top: 25px;
@@ -435,6 +409,31 @@ header .user-details {
   margin: 0.8rem 0;
 }
 
+footer {
+  padding: 1rem 4rem;
+  background-color: #eeeeee;
+  width: 100%;
+  font-family: Primary-Light;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  footer {
+    padding: 1rem 2rem;
+  }
+}
+footer .container {
+  width: 90%;
+  margin: 0 auto;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  footer .container {
+    width: 100%;
+  }
+}
+
 .products-container {
   padding: 3rem 2.5rem 2rem;
   width: 100%;
@@ -565,6 +564,24 @@ header .user-details {
     width: 100%;
   }
 }
+.cart-wishlist-container .tabs li {
+  display: inline-block;
+}
+.cart-wishlist-container .tab-content {
+  display: none;
+  line-height: 1.4;
+  height: 100%;
+}
+.cart-wishlist-container .tab-content.active {
+  display: inherit;
+}
+.cart-wishlist-container .tab-content .message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  font-family: "Primary-Regular";
+}
 .cart-wishlist-container .hide-cart-wishlist-container {
   display: none;
   /**Start of responsive scss **/
@@ -675,18 +692,6 @@ header .user-details {
   padding: 0.5rem 2rem;
 }
 
-.tabs li {
-  display: inline-block;
-}
-
-.tab-content {
-  display: none;
-  line-height: 1.4;
-}
-.tab-content.active {
-  display: inherit;
-}
-
 /** Start of variables - colors **/
 /** End of variables - colors **/
 /** Start of variables - fonts **/
@@ -739,6 +744,9 @@ header .user-details {
 .checkout-container .total-price .total-amount {
   margin: 5px 0;
 }
+.checkout-container.d-none {
+  display: none;
+}
 
 .orders-list-container {
   padding: 3rem 4rem 2rem;
@@ -784,8 +792,7 @@ header .user-details {
 .orders-list {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(350px, minmax(-webkit-min-content, 1fr));
-  grid-template-columns: repeat(350px, minmax(min-content, 1fr));
+  grid-template-columns: auto 1fr;
   grid-gap: 40px;
   overflow-x: scroll;
 }

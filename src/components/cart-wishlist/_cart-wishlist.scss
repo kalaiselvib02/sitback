@@ -16,7 +16,23 @@
     width: 100%;
   }
   /**End of responsive scss **/
-.hide-cart-wishlist-container{
+  .tabs li{
+    display: inline-block;
+  }
+  .tab-content{
+    display: none;
+    line-height:1.4;
+    height: 100%;
+    &.active{
+      display: inherit;
+    }
+    .message-container{
+      @include mixins.flexbox(center, center, false);
+      height: inherit;
+      font-family: "Primary-Regular";
+    }
+  }  
+  .hide-cart-wishlist-container{
   display: none;
   /**Start of responsive scss **/
   @media only screen and (max-width: variables.$mobile-width) {
@@ -26,7 +42,7 @@
 
   }
   /**End of responsive scss **/
-}
+  }
   nav {
     padding: 2.5rem 2rem 0;
     ul {
@@ -110,15 +126,5 @@
     }
   }
   
-}
-.tabs li{
-  display: inline-block;
-}
-.tab-content{
-  display: none;
-  line-height:1.4;
-  &.active{
-    display: inherit;
-  }
 }
 

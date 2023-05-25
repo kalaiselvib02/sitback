@@ -6,7 +6,7 @@ import { Checkout } from "../cart-wishlist/checkout/checkout.js";
 
 export const QuantityCounter = {
     create : (item , fragment) => createQuantityCounter(item , fragment),
-    increment : (item , arr) => incrementQuantity(item , arr),
+    increment : (item) => incrementQuantity(item),
     decrement : (item ) => decrementQuantity(item),
     update : (item) => updateCounterValue(item)
 }
@@ -19,32 +19,35 @@ const createQuantityCounter = (itemDetails , fragment) => {
     const quantity = createElement("p" , "quantity-value");
     quantity.textContent = itemDetails.cardQuantity;
     const addQuantityBtn = createButton("+" , "add-quantity");
-    // addQuantityBtn.addEventListener("click" , () => QuantityCounter.increment)
+    addQuantityBtn.addEventListener("click" , () => QuantityCounter.increment(itemDetails))
     appendGroup([decrementQuantityBtn , quantity , addQuantityBtn] , quantityCounter)
     fragment.appendChild(quantityCounter);
     return fragment
 }
 
-const incrementQuantity = (item , arr) => {
-console.log(item)
-item.quantity = item.quantity + 1;
-QuantityCounter.update(item)
-setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , arr)
+const incrementQuantity = (item) => {
+const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART)
+    if(myCartArr) {
+        const currentIndex = myCartArr.findIndex(it => it.id == (item.id || item.cardId));
+        myCartArr[currentIndex].quantity = myCartArr[currentIndex].quantity + 1
+        setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCartArr)
+        QuantityCounter.update(myCartArr[currentIndex]);
+        Checkout.calculate(myCartArr);
+    }
 }
 
 const decrementQuantity = (itemVal) => {
-    const myCart = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
-    if(myCart) {
-        const currentIndex = myCart.findIndex(item => item.id == itemVal.cardId);
-        const currentItem = myCart[currentIndex];
-        currentItem.quantity =  currentItem.quantity - 1;
-        setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCart);
-        QuantityCounter.update(currentItem);
-        console.log(myCart)
-        Checkout.calculate(myCart);
-        if(currentItem.quantity <= 0) {
-            Cart.remove(myCart[currentIndex] , myCart)
+    const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART)
+    if(myCartArr) {
+        const currentIndex = myCartArr.findIndex(it => it.id == itemVal.cardId);
+        myCartArr[currentIndex].quantity = myCartArr[currentIndex].quantity - 1;
+        setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART , myCartArr);
+        QuantityCounter.update(myCartArr[currentIndex]);
+        Checkout.calculate(myCartArr);
+        if(myCartArr[currentIndex].quantity <= 0) {
+            Cart.remove(myCartArr[currentIndex] , myCartArr)
         } 
+        
     }
 }
 
@@ -58,7 +61,6 @@ const updateCounterValue = (item) => {
             counterValue.textContent = item.quantity
         }
     })
-    
 }
 
 

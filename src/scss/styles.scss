@@ -8,13 +8,13 @@
 @use "../scss/button";
 @use "../scss/cards";
 @use "../scss//nav";
-@use "../scss/footer";
 @use "../components/ui/toaster";
 
 
 
 @use "../components/header/header";
 @use "../components/categories/categories";
+@use "../components/footer/footer";
 @use "../components/products/products";
 @use "../components/cart-wishlist/cart-wishlist";
 @use "../components//quantity-counter/quantity-counter";

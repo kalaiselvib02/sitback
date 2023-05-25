@@ -175,7 +175,6 @@ const createCartCard = (item, fragment) => {
   cartCard(cardItemDetails, fragment);
 };
 
-
 const cartCard = (itemDetails, fragment) => {
   const card = cartWishlistCard(itemDetails , fragment);
   const cardDetails = card.querySelector(".card-details")
@@ -186,7 +185,6 @@ const cartCard = (itemDetails, fragment) => {
    fragment.appendChild(card);
    const parentSelector = document.querySelector(".cart-container");
    parentSelector.append(fragment);
-  
  };
 
 const removeCartCard = (id) => {
