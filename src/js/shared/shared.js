@@ -2,11 +2,12 @@ import { APP_CONSTANTS } from "../../constants/constants.js";
 import { fetchData } from "../services/fetchService.js";
 import { Products } from "../../components/products/products.js";
 import { Cart , toggleCheckoutContainer, toggleMessageContainer } from "../../components/cart-wishlist/cart/cart.js";
-import { checkDataLength, emptyListMessage, getLocalStorage } from "../utils/utils.js";
-import { hideCheckout, Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
+import { checkDataLength, createElement, emptyListMessage, getLocalStorage } from "../utils/utils.js";
+import { Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
 import { CartWishlist } from "../../components/cart-wishlist/cart-wishlist.js";
 import { Checkout } from "../../components/cart-wishlist/checkout/checkout.js";
 import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
+import { Orders } from "../../components/orders/orders.js";
 export const SharedData = {
     fetch : {
         fetchCategories : {
@@ -42,32 +43,41 @@ const getCategoryList = async () => {
 
 const getCategoryNames = async () => {
     const dataList = await getCategoryList();
-    let categoryNames = [];
-    dataList.forEach(dataElement => categoryNames.push(dataElement.category));
-    return categoryNames
+    if(dataList) {
+        let categoryNames = [];
+        dataList.forEach(dataElement => categoryNames.push(dataElement.category));
+        return categoryNames
+    }
+  
+    
 }
 
 const getProductsList = async (catId) => {
+    const categoriesContainer = document.querySelector(".categories-container");
+    if(categoriesContainer) categoriesContainer.remove();
+    const footer = document.querySelector("footer");
+    if(footer) footer.remove();
     const productUrl = APP_CONSTANTS.FETCH_URL.PRODUCT + catId
     const dataList = await getDataFromService(productUrl);
+    Products.create()
     Products.display(dataList);
+    CartWishlist.create();
+    CartWishlist.setActive(APP_CONSTANTS.CLASS_NAMES.CART_CONTAINER);
+    CartWishlist.navigate()
     populateCart()
     populateWishlist();
     Checkout.populate()
-    CartWishlist.close();
-    const footer = document.querySelector("footer");
-    footer.classList.add("d-none");
+    // CartWishlist.close();
 }
-
 export const populateCart = () => {
 const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
-CartWishlist.setActive("cartContainer");
 const parentSelector = document.querySelector(".cart-container");
 parentSelector.innerHTML = "";
 if(myCartArr.length) {
     Cart.populateCart(myCartArr);
 }
 else{
+    checkDataLength(APP_CONSTANTS.STORAGE_KEYS.MY_CART , MESSAGE_CONSTANTS.EMPTY_LIST.MY_CART , parentSelector)
     toggleMessageContainer(true , parentSelector)
 }
 
@@ -88,3 +98,11 @@ export const populateWishlist = () => {
     
 }
 
+export const showFetchErrorMessage = () => {
+    const errorMessage = createElement("p" , "fetch-error-message");
+    errorMessage.textContent = MESSAGE_CONSTANTS.FETCH_ERROR;
+    const wrapper = document.querySelector(".wrapper");
+    const checkExistingMessage = document.querySelector(".fetch-error-message");
+    wrapper.innerHTML = "";
+    if(!checkExistingMessage) wrapper.appendChild(errorMessage)
+}

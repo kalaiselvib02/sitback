@@ -1,5 +1,5 @@
 export const MESSAGE_CONSTANTS = {
-    
+    FETCH_ERROR:"Sorry , Some Error Occured....",
     ORDER_CONFIRMATION:{
         HEADING_TEXT : "Order Confirmation",
         CONFIRMATION_TEXT:"Thank you for shopping with us. The items will be delivered in 7 days",

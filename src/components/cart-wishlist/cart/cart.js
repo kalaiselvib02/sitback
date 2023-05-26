@@ -7,16 +7,16 @@ import {
   removeActiveClass,
   setLocalStorage,
   checkDataLength,
+  showElement,
+  hideElement,
 } from "../../../js/utils/utils.js";
 import { Checkout } from "../checkout/checkout.js";
 import { QuantityCounter } from "../../quantity-counter/quantity-counter.js";
 import { CartWishlist } from "../cart-wishlist.js";
 import { Toaster } from "../../ui/toaster.js";
-import { hideCheckout } from "../wishlist/wishlist.js";
 import { populateWishlist } from "../../../js/shared/shared.js";
 
-let cartStore = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
-let myCart = cartStore ? cartStore : [];
+
 
 export const Cart = {
   add: (item) => addToCartStore(item),
@@ -24,14 +24,21 @@ export const Cart = {
   displayCart: (item) => displayCartItems(item),
   displayWishlist: (item) => displayWishlistItems(item),
   populateCart: (dataArr) => populateCartItems(dataArr),
+  clear : () => clearCart()
 };
 
 const addToCartStore = (item) => {
+let cartStore = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+let myCart = cartStore ? cartStore : [];
   const existingItem = checkUnique(myCart, item);
   if (!existingItem) {
     Cart.displayCart(item);
-    item.quantity = 1;
+    item.quantity = item.quantity ? item.quantity : 1;
     myCart = [...myCart, item];
+    const warningIcon = document.querySelector(".warning-icon");
+    const successIcon = document.querySelector(".fa-check");
+    showElement(successIcon , "flex");
+    hideElement(warningIcon , "flex")
     Toaster.show(
       APP_CONSTANTS.TOASTER.SUCCESS,
       MESSAGE_CONSTANTS.TOASTER.CART.CART_SUCCESS
@@ -40,29 +47,42 @@ const addToCartStore = (item) => {
   } else {
     const currentElement = myCart.find((cartItem) => cartItem.id == item.id);
     QuantityCounter.increment(currentElement);
+    Checkout.calculate(myCart);
   }
-  const cartContainer = document.querySelector(".cart-container");
-  toggleCheckoutContainer(true);
-  toggleMessageContainer(false, cartContainer);
+
+  const messageContainer = document.querySelector(".cart-container .message-container");
+  if(messageContainer)   messageContainer.remove()
+  toggleCheckoutContainer(true)
+  const wishListContainer = document.querySelector(".wishlist-container");
   const myWishlistArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST);
+  if(!myWishlistArr.length){
+    checkDataLength(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST , MESSAGE_CONSTANTS.EMPTY_LIST.WISH_LIST , wishListContainer);
+  }
   populateWishlist(myWishlistArr);
-  CartWishlist.setActive("cartContainer");
-  Checkout.calculate(myCart);
+
 };
 
-const removeFromCartStore = (item, arr) => {
-  myCart = arr.filter((cartItem) => cartItem.id !== item.id);
-  setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART, myCart);
-  Card.remove.cartList(item.id);
-  if (!myCart.length) {
-    const cartContainer = document.querySelector(".cart-container");
-    checkDataLength(
-      APP_CONSTANTS.STORAGE_KEYS.MY_CART,
-      MESSAGE_CONSTANTS.EMPTY_LIST.MY_CART,
-      cartContainer
-    );
-    toggleCheckoutContainer();
+const removeFromCartStore = (item) => {
+  const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+  if(myCartArr) {
+    const filteredArr = myCartArr.filter((cartItem) => cartItem.id !== item.id);
+    setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART, filteredArr);
+    Card.remove.cartList(item.id);
+    if (!filteredArr.length) {
+      const cartContainer = document.querySelector(".cart-container");
+       checkDataLength(
+        APP_CONSTANTS.STORAGE_KEYS.MY_CART,
+        MESSAGE_CONSTANTS.EMPTY_LIST.MY_CART,
+        cartContainer
+      );
+      const messageContainer = cartContainer.querySelector(".message-container")
+      if(messageContainer) showElement(messageContainer) 
+      toggleCheckoutContainer();
+    }
   }
+ 
+ 
+ 
 };
 
 const displayCartItems = (item) => {
@@ -73,22 +93,23 @@ const displayCartItems = (item) => {
 const populateCartItems = (dataArr) => {
   const cardFragment = new DocumentFragment();
   dataArr.forEach((element) => Card.create.cartList(element, cardFragment));
-  CartWishlist.setActive("cartContainer");
 };
 
+const clearCart = () => {
+const cartItems = document.querySelectorAll(".cart-container .card");
+cartItems.forEach(cartItem => cartItem.remove());
+}
 export const toggleCheckoutContainer = (show) => {
   const containerElement = document.querySelector(".checkout-container");
-  show
-    ? containerElement.classList.remove("d-none")
-    : containerElement.classList.add("d-none");
+  show ? showElement(containerElement) : hideElement(containerElement)
 };
 
 export const toggleMessageContainer = (show, container) => {
-  console.log("called")
-  const containerElement = container.querySelector(".message-container");
-  if (containerElement) {
-    show
-      ? (containerElement.style.display = "flex")
-      : (containerElement.style.display = "none");
-  }
+ 
+  // const containerElement = container.querySelector(".message-container");
+  // if (containerElement) {
+  //   show
+  //     ? (containerElement.style.display = "flex")
+  //     : (containerElement.style.display = "none");
+  // }
 };

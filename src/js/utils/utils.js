@@ -1,8 +1,8 @@
-
 /**
  * Query selector with optional scope
  */
-export const select = (selector, scope) => (scope || document).querySelector(selector);
+export const select = (selector, scope) =>
+  (scope || document).querySelector(selector);
 
 /**
  * addEventListener wrapper
@@ -32,44 +32,65 @@ export const createButton = (buttonContent, className) => {
   return button;
 };
 
-export const appendGroup = (arr , selector) => {
-  arr.forEach(item => selector.appendChild(item))
-}
+export const appendGroup = (arr, selector) => {
+  arr.forEach((item) => (selector ? selector.appendChild(item) : ""));
+};
 
-export const setLocalStorage = (keyName , value) => {
-  localStorage.setItem(keyName , JSON.stringify(value))
-}
+export const setLocalStorage = (keyName, value) => {
+  localStorage.setItem(keyName, JSON.stringify(value));
+};
 
 export const getLocalStorage = (keyName) => {
- return localStorage.getItem(keyName) ? JSON.parse(localStorage.getItem(keyName)) : "" 
-}
+  return localStorage.getItem(keyName)
+    ? JSON.parse(localStorage.getItem(keyName))
+    : "";
+};
 
-export const checkUnique = (arr , findMatch) => arr.find(item => item.id === findMatch.id);
+export const clearLocalStorage = (keyName) => {
+  localStorage.getItem(keyName) ? localStorage.removeItem(keyName) : "";
+};
+export const checkUnique = (arr, findMatch) =>
+  arr.find((item) => item.id === findMatch.id);
 
-export const convertToRupee = (price) =>  parseInt(price).toLocaleString('en-IN'); 
+export const convertToRupee = (price) =>
+  parseInt(price).toLocaleString("en-IN");
 
 export const removeActiveClass = (arr) => {
-  arr.forEach(item => item.classList.remove("active"))
-}
+  arr.forEach((item) => item.classList.remove("active"));
+};
 
-export const checkDataLength = (key , text , wrapper) => {
+export const checkDataLength = (key, text, wrapper) => {
   const dataArr = getLocalStorage(key);
-  if(!dataArr.length) {
-    emptyListMessage(text,wrapper)
+  if (!dataArr.length) {
+    emptyListMessage(text, wrapper);
   }
-}
+};
 
-export const emptyListMessage = (text , wrapper) => {
-  const messageContainer = createElement("div" , "message-container");
-  const messageElement = document.createElement("p" , "empty-list");
+export const emptyListMessage = (text, wrapper) => {
+  const messageContainer = createElement("div", "message-container");
+  const messageElement = document.createElement("p", "empty-list");
   messageElement.textContent = text;
   messageContainer.appendChild(messageElement);
-  const checkExisting = document.querySelector(".message-container");
-  if(!checkExisting) wrapper.appendChild(messageContainer)
- 
-}
+  const checkExisting = wrapper.querySelector(".message-container");
+  if (!checkExisting) wrapper.appendChild(messageContainer);
+};
 
-export const hideElement = (selector) => {
-  selector.classList.add("d-none");
+export const hideElement = (selector, flexClass) => {
+  if (selector) {
+    if (flexClass) {
+      selector.style.display = "none";
+    } else {
+      selector.classList.add("d-none");
+    }
   }
-  
+};
+
+export const showElement = (selector, flexClass) => {
+  if (selector) {
+    if (flexClass) {
+      selector.style.display = flexClass
+    } else {
+      selector.classList.remove("d-none");
+    }
+  }
+};

@@ -9,7 +9,7 @@
 	border-radius: 12px;
 	background: variables.$white;
 	padding: 10px 35px 20px 25px;
-	box-shadow: 0 5px 40px rgba(0,0,0,0.1);
+	box-shadow: 0 5px 40px variables.$black;
 	border-left: 6px solid variables.$black;
 	overflow: hidden;
 	transform: translateX(calc(100% + 30px));
@@ -37,14 +37,9 @@
 }
 .toast.active {
 	transform: translateX(0%);
-	~ {
-		button {
-			pointer-events: none;
-		}
-	}
 }
 .toast-content {
-	.check {
+	.check , .warning-icon {
 		@include mixins.flexbox(center , center , false);
 		height: 35px;
 		width: 35px;
@@ -74,7 +69,7 @@
 }
 .progress.active {
 	&:before {
-		animation: progress 5s linear forwards;
+		animation: progress 2.5s linear forwards;
 	}
 }
 @keyframes progress {

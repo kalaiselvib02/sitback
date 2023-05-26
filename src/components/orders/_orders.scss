@@ -63,6 +63,7 @@
         font-family: "Primary-Medium";
         .card-title {
             margin : 0.5rem 0;
+            @include mixins.text-ellipsis(70%);
         }
         .card-price-container {
             @include mixins.flexbox(false, center, 5px);
@@ -80,7 +81,8 @@
             line-height: 20px;
             margin-bottom: 0.5rem;
             color: variables.$text-light;
-            font-family: "Primary-Regular";
+            font-family: Primary-Regular;
+            @include mixins.text-ellipsis(70%);
         }
     }
 }

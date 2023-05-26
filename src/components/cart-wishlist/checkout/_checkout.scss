@@ -3,11 +3,11 @@
 @use "../../../scss/mixins";
 
 .checkout-container{
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 100%;
     background-color: variables.$white;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
     @include mixins.flexbox(space-between , center , false);
     .container-heading{
@@ -29,4 +29,5 @@
     &.d-none{
         display: none;
     }
+ 
 }

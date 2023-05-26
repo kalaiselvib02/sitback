@@ -1,15 +1,18 @@
 import { APP_CONSTANTS } from "../../constants/constants.js";
 import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 import { Card } from "../../js/shared/cards.js";
-import { appendGroup, createElement, getLocalStorage, removeActiveClass } from "../../js/utils/utils.js";
+import { appendGroup, createElement, getLocalStorage, hideElement, removeActiveClass , clearLocalStorage} from "../../js/utils/utils.js";
+import { Cart, toggleCheckoutContainer } from "../cart-wishlist/cart/cart.js";
 import { Checkout } from "../cart-wishlist/checkout/checkout.js";
+import { Categories } from "../categories/categories.js";
+import { Footer } from "../footer/footer.js";
 
 export const Orders = {
-  handleClick :  () => handleClickButton(),
   create : {
     container : () => createOrderListContainer(), 
-    listItem : () => createOrderListItem()
+    listItem : (element) => createOrderListItem(element)
   },
+  handleClick :  () => handleClickButton(),
   display: () => displayOrderList(),
 };
 
@@ -25,16 +28,16 @@ const createOrderListContainer = () => {
     appendGroup([containerTitleText , containerDescText] , orderConfirmationMessage);
     appendGroup([orderConfirmationMessage , ordersList] , container);
     orderListContainer.appendChild(container);
+    const wrapper = document.querySelector(".wrapper");
+    const checkExistingContainer = document.querySelector(".orders-list-container");
+    if(!checkExistingContainer) wrapper.appendChild(orderListContainer);
 }
-const handleClickButton = () => {
-    const placeOrderBtn = document.querySelector(".place-order");
-    placeOrderBtn.addEventListener("click", () => Orders.display());
-    Orders.create.container();
-}
+
 
 const displayOrderList = () => {
     const productsScreen = document.querySelector(".products-screen");
-    productsScreen.classList.add("d-none");
+    hideElement(productsScreen)
+    Orders.create.container();
     const myOrders = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
     if(myOrders){
         const orderListContainer = document.querySelector(".orders-list");
@@ -43,16 +46,19 @@ const displayOrderList = () => {
     }
     const allNavLinks = document.querySelectorAll("header ul .nav-link");
     removeActiveClass(allNavLinks);
-    const ordersContainer = document.querySelector(".orders-list-container");
-    ordersContainer.classList.remove("d-none")
-    const catergoriesContainer = document.querySelector(".categories-container");
-    catergoriesContainer.classList.remove("d-none");
+    clearLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+    Cart.clear()
+    toggleCheckoutContainer()
+    Categories.display()
 }
 
 const createOrderListItem = (item) => {
     const orderListContainer = document.querySelector(".orders-list");
-    const orderFragment = new DocumentFragment();
-    Card.create.ordersList(item, orderFragment);
-    orderListContainer.appendChild(orderFragment);
+    if(orderListContainer) {
+      const orderFragment = new DocumentFragment();
+      Card.create.ordersList(item, orderFragment);
+      orderListContainer.appendChild(orderFragment);
+    }
+  
   };
 

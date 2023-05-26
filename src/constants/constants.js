@@ -9,7 +9,16 @@ export const APP_CONSTANTS = {
     },
     ON_ERROR_URL:"this.onerror=null;this.src='https://placehold.jp/200x200.png';",
     CHECKOUT:{
-        MENU_NAV : ["MY CART" , "MY WISHLIST"],
+        MENU_NAV : [
+          {
+          NAME: "MY CART",
+          ATTR : "cartContainer"
+         },
+         {
+          NAME: "WISHLIST",
+          ATTR : "wishlistContainer"
+         }
+      ],
         TOTAL:"TOTAL AMOUNT",
         PLACE_ORDER:"PLACE ORDER",
     },
@@ -35,6 +44,9 @@ export const APP_CONSTANTS = {
       SUCCESS:"Success",
       ERROR:"Error",
     },
-   
+   CLASS_NAMES:{
+    CART_CONTAINER:"cartContainer",
+    WISH_LIST : "wishlistContainer"
+   }
   };
   

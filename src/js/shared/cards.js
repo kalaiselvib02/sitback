@@ -8,6 +8,7 @@ import {
   createTextNode,
   createButton,
   convertToRupee,
+  showElement,
 } from "../utils/utils.js";
 
 export const Card = {
@@ -170,7 +171,7 @@ const createCartCard = (item, fragment) => {
     cardQuantity: item.quantity ? item.quantity : 1,
   };
   const cartWishlistContainer = document.querySelector(".cart-wishlist-container");
-  cartWishlistContainer.classList.remove("d-none");
+  showElement(cartWishlistContainer);
   cardLayoutChange();
   cartCard(cardItemDetails, fragment);
 };
@@ -184,7 +185,7 @@ const cartCard = (itemDetails, fragment) => {
    card.appendChild(cardDetails);
    fragment.appendChild(card);
    const parentSelector = document.querySelector(".cart-container");
-   parentSelector.append(fragment);
+   if(parentSelector) parentSelector.append(fragment);
  };
 
 const removeCartCard = (id) => {
@@ -207,10 +208,9 @@ const createWishListCard  = (item, fragment) => {
     cardImageOnErrorUrl: APP_CONSTANTS.ON_ERROR_URL,
     cardTitle: item.name,
     cardPrice: item.price,
-    cardQuantity: item.quantity ? item.quantity : 1,
   };
   const cartWishlistContainer = document.querySelector(".cart-wishlist-container");
-  cartWishlistContainer.classList.remove("d-none");
+  showElement(cartWishlistContainer);
   cardLayoutChange();
   wishListCard(cardItemDetails , fragment)
 }

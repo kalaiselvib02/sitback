@@ -1,5 +1,5 @@
 import { SharedData } from "../../js/shared/shared.js"
-import { createElement, removeActiveClass, select } from "../../js/utils/utils.js"
+import { createElement, removeActiveClass, select, showElement } from "../../js/utils/utils.js"
 
 
 
@@ -47,15 +47,13 @@ if(navLinkNodes) {
 
 
 const navigateToCategoryProducts = (catId) => {
-const ordersContainer = document.querySelector(".orders-list-container");
-ordersContainer.classList.add("d-none");
-const categoriesContainer = document.querySelector(".categories-container");
-categoriesContainer.classList.add("d-none");
-const productsScreen = document.querySelector(".products-screen ");
-productsScreen.classList.remove("d-none");
 SharedData.fetch.fetchProducts.getList(catId.toLowerCase());
 let navLinkNodes = document.querySelectorAll(".nav-link");
 navLinkNodes = Array.from(navLinkNodes);
 removeActiveClass(navLinkNodes)
-setActiveNavItem(catId)
+setActiveNavItem(catId);
+const orderListContainer = document.querySelector(".orders-list-container");
+if(orderListContainer) orderListContainer.remove()
+const productsScreen = document.querySelector(".products-screen");
+if(productsScreen) showElement(productsScreen)
 }

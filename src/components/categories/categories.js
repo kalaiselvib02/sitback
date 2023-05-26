@@ -2,7 +2,7 @@
 import { SharedData } from "../../js/shared/shared.js";
 import { Card } from "../../js/shared/cards.js";
 import { Header } from "../header/header.js";
-import { appendGroup, createElement } from "../../js/utils/utils.js";
+import { appendGroup, createElement, createTextNode } from "../../js/utils/utils.js";
 import { Footer } from "../footer/footer.js";
 import { APP_CONSTANTS } from "../../constants/constants.js";
 
@@ -15,16 +15,19 @@ export const Categories = {
 const createHeroText = () => {
     const categoriesContainer = createElement("div" , "categories-container");
     const heroTextContainer = createElement("div" , "hero-text-container");
-    let headingText = createElement("h1" , "heading-text");
-    headingText.textcontent = APP_CONSTANTS.CATEGORIES.HERO_TEXT;
-    let subText = createElement("p" , "sub-text");
-    subText.textcontent = APP_CONSTANTS.CATEGORIES.SUB_TEXT;
+    const headingText = createElement("h1" , "heading-text");
+    const headingTextVal = createTextNode(APP_CONSTANTS.CATEGORIES.HERO_TEXT)
+    headingText.appendChild(headingTextVal);
+    const subText = createElement("p" , "sub-text");
+    const subTextVal = createTextNode(APP_CONSTANTS.CATEGORIES.SUB_TEXT)
+    subText.appendChild(subTextVal);
     appendGroup([headingText , subText] , heroTextContainer);
     categoriesContainer.appendChild(heroTextContainer);
     const categoriesListContainer = createElement("div" ,  "categories-list");
     categoriesContainer.appendChild(categoriesListContainer)
     const wrapper = document.querySelector(".wrapper");
-    wrapper.appendChild(categoriesContainer);
+    const checkExistingContainer = document.querySelector(".categories-container");
+    if(!checkExistingContainer) wrapper.appendChild(categoriesContainer);
 }
 
 const getCategoriesList =  async () => {
@@ -38,16 +41,17 @@ const displayCategoryList =  async () => {
     dataList.forEach(element => createCategoryItem(element));
     const wrapper = document.querySelector(".wrapper");
     const footer = Footer.create();
-    wrapper.appendChild(footer);
+    const checkExistingFooter = document.querySelector("footer");
+    if(!checkExistingFooter) wrapper.appendChild(footer);
 }
 const createCategoryItem = (item) => {
     const categoriesContainer = document.querySelector(".categories-container");
     const categoriesListContainer =  document.querySelector(".categories-list");
     if(categoriesContainer){
-        categoriesContainer.appendChild(categoriesListContainer);
         const categoryFragment = new DocumentFragment();
         Card.create.categoriesList(item , categoryFragment);
         categoriesListContainer.appendChild(categoryFragment);
+        categoriesContainer.appendChild(categoriesListContainer);
         Categories.navigate();
     }
    

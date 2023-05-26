@@ -61,6 +61,7 @@
             .card-title{
                 font-family: "Primary-Light";
                 margin: 0.8rem 0;
+                @include mixins.text-ellipsis(70%);
                  /**Start of responsive scss **/
                 @media only screen and (max-width: variables.$mobile-width) {
                     @include mixins.card(350px ,100% , 1.35rem  , 0.7rem);
@@ -69,9 +70,10 @@
                 /**End of responsive scss **/
             }
            .card-description {
-            font-family: "Primary-Regular";
+            font-family: Primary-Regular;
             line-height: 22px;
             color: variables.$text-light;
+        
            }
            button{
             margin: 0.8rem 0;

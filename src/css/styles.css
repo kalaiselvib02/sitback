@@ -43,18 +43,6 @@ a {
 /** Start of mixin flexbox **/
 /** End of mixin flexbox **/
 /** Start of mixin flexbox **/
-.text-center {
-  text-align: center;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.d-none {
-  display: none;
-}
-
 @font-face {
   font-family: "Primary-Thin";
   src: url("../assets/fonts/ProductSans-Thin.ttf") format("truetype");
@@ -85,6 +73,28 @@ a {
   font-weight: 600;
   font-style: normal;
 }
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-none {
+  display: none;
+}
+
+.fetch-error-message {
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  height: 80vh;
+  font-family: Primary-Regular;
+}
+
 .btn {
   border-bottom-right-radius: 0.35rem;
   font-family: Primary-Medium;
@@ -131,7 +141,7 @@ nav ul a.active::before {
   border-radius: 12px;
   background: #fff;
   padding: 10px 35px 20px 25px;
-  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 40px #000000;
   border-left: 6px solid #000000;
   overflow: hidden;
   transform: translateX(calc(100% + 30px));
@@ -162,11 +172,8 @@ nav ul a.active::before {
 .toast.active {
   transform: translateX(0%);
 }
-.toast.active ~ button {
-  pointer-events: none;
-}
 
-.toast-content .check {
+.toast-content .check, .toast-content .warning-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,8 +205,8 @@ nav ul a.active::before {
 }
 
 .progress.active:before {
-  -webkit-animation: progress 5s linear forwards;
-          animation: progress 5s linear forwards;
+  -webkit-animation: progress 2.5s linear forwards;
+          animation: progress 2.5s linear forwards;
 }
 
 @-webkit-keyframes progress {
@@ -211,26 +218,6 @@ nav ul a.active::before {
 @keyframes progress {
   100% {
     right: 100%;
-  }
-}
-@-webkit-keyframes animatetop {
-  from {
-    right: -300px;
-    opacity: 0;
-  }
-  to {
-    right: 0;
-    opacity: 1;
-  }
-}
-@keyframes animatetop {
-  from {
-    right: -300px;
-    opacity: 0;
-  }
-  to {
-    right: 0;
-    opacity: 1;
   }
 }
 header {
@@ -287,6 +274,45 @@ header .user-details {
   font-size: 0.8rem;
   color: #000000;
   font-family: Primary-Medium;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#spinner::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #000000;
+  border-radius: 100%;
+  will-change: transform;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
 }
 
 .categories-container {
@@ -380,6 +406,10 @@ header .user-details {
 .categories-container .categories-list .card .card-title {
   font-family: "Primary-Light";
   margin: 0.8rem 0;
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   /**Start of responsive scss **/
   /**End of responsive scss **/
 }
@@ -401,7 +431,7 @@ header .user-details {
   }
 }
 .categories-container .categories-list .card .card-description {
-  font-family: "Primary-Regular";
+  font-family: Primary-Regular;
   line-height: 22px;
   color: #777575;
 }
@@ -503,6 +533,10 @@ footer .container {
 }
 .products-list .card-heading .card-title {
   margin: 0.5rem 0;
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .products-list .card-heading .card-price-container {
   display: flex;
@@ -521,7 +555,7 @@ footer .container {
   line-height: 20px;
   margin-bottom: 0.5rem;
   color: #777575;
-  font-family: "Primary-Regular";
+  font-family: Primary-Regular;
 }
 .products-list .card-body .card-gaurantee-container {
   display: flex;
@@ -667,6 +701,10 @@ footer .container {
 }
 .cart-wishlist-container .card-heading h2 {
   color: #383737;
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .cart-wishlist-container .card-heading .card-price-container {
   margin: 0.6rem 0;
@@ -685,8 +723,9 @@ footer .container {
   left: auto;
 }
 .cart-wishlist-container .user-prefered-items {
-  height: 80vh;
+  height: 70vh;
   overflow: scroll;
+  margin-bottom: 3rem;
 }
 .cart-wishlist-container .user-prefered-items .cart-container, .cart-wishlist-container .user-prefered-items .wishlist-container {
   padding: 0.5rem 2rem;
@@ -717,11 +756,11 @@ footer .container {
 }
 
 .checkout-container {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   width: 100%;
   background-color: #fff;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
   display: flex;
   align-items: center;
@@ -829,6 +868,10 @@ footer .container {
 }
 .orders-list .card-heading .card-title {
   margin: 0.5rem 0;
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .orders-list .card-heading .card-price-container {
   display: flex;
@@ -847,5 +890,9 @@ footer .container {
   line-height: 20px;
   margin-bottom: 0.5rem;
   color: #777575;
-  font-family: "Primary-Regular";
+  font-family: Primary-Regular;
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }/*# sourceMappingURL=styles.css.map */

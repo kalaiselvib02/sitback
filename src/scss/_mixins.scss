@@ -46,3 +46,10 @@
     grid-template-columns: auto 1fr;
     grid-gap: $grid-gap;
 }
+@mixin text-ellipsis($width) {
+    width: $width;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+

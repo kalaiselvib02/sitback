@@ -102,6 +102,7 @@
     font-family: Primary-Regular;
     h2 {
       color: variables.$mild-black;
+      @include mixins.text-ellipsis(70%);
     }
     .card-price-container {
       margin: 0.6rem 0;
@@ -119,8 +120,9 @@
     left: auto;
   }
   .user-prefered-items{
-    height: 80vh;
+    height: 70vh;
     overflow: scroll;
+    margin-bottom: 3rem;
     .cart-container,.wishlist-container{
       padding: 0.5rem 2rem;
     }

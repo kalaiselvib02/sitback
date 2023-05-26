@@ -1,6 +1,7 @@
 
 @use "variables" ;
 @use "mixins" ;
+@use "fonts";
 
 .text-center{
     text-align: center;
@@ -10,4 +11,13 @@
 }
 .d-none{
     display: none;
+}
+.fetch-error-message{
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    height: 80vh;
+    font-family: Primary-Regular;
 }

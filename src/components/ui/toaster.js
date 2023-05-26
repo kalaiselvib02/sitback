@@ -20,6 +20,12 @@ Toaster.hide()
 const hideToaster = () => {
     const toast = document.querySelector(".toast");
     const progress = toast.querySelector(".progress");
+    setTimeout (() => {
+        const statusText = document.querySelector(".status-text");
+        statusText.textContent = "";
+        const messageText = document.querySelector(".message-text");
+        messageText.textContent = "";
+    }, 2800)
     setTimeout(() => {
         toast.classList.remove("active");
     }, APP_CONSTANTS.TOASTER.TIME_INTERVAL);
@@ -27,12 +33,7 @@ const hideToaster = () => {
     setTimeout(() => {
       progress.classList.remove("active");
     }, APP_CONSTANTS.TOASTER.TIME_INTERVAL);
-    setTimeout (() => {
-        const statusText = document.querySelector(".status-text");
-        statusText.textContent = "";
-        const messageText = document.querySelector(".message-text");
-        messageText.textContent = "";
-    }, APP_CONSTANTS.TOASTER.TIME_INTERVAL)
+   
 }
 
 

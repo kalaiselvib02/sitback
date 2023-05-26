@@ -13,6 +13,7 @@
 
 
 @use "../components/header/header";
+@use "../components/loader/loader";
 @use "../components/categories/categories";
 @use "../components/footer/footer";
 @use "../components/products/products";
@@ -20,4 +21,5 @@
 @use "../components//quantity-counter/quantity-counter";
 @use "../components/cart-wishlist/checkout/checkout";
 @use "../components/orders/orders";
+
 
