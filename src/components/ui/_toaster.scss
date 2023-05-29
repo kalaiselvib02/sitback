@@ -9,7 +9,7 @@
 	border-radius: 12px;
 	background: variables.$white;
 	padding: 10px 35px 20px 25px;
-	box-shadow: 0 5px 40px variables.$black;
+	box-shadow: 0 5px 5px variables.$black;
 	border-left: 6px solid variables.$black;
 	overflow: hidden;
 	transform: translateX(calc(100% + 30px));
@@ -43,10 +43,13 @@
 		@include mixins.flexbox(center , center , false);
 		height: 35px;
 		width: 35px;
-		background-color: lightblue;
-		color: red;
+		background-color: variables.$success-bg;
+		color: variables.$white;
 		font-size: 15px;
 		border-radius: 50%;
+	}
+	.warning-icon{
+		background-color: variables.$warning-bg;
 	}
 	.message {
 		@include mixins.flexbox(false , false , false);

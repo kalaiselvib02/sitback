@@ -59,14 +59,15 @@ const productsScreen = document.querySelector(".products-screen");
 if(productsScreen) showElement(productsScreen)
 }
 
-const test = () => {
+const openNavigationMenu = () => {
     const navUserDetails = document.querySelector(".nav-user-details");
-  showElement(navUserDetails , APP_CONSTANTS.SELECTOR_CLASSNAMES.FLEX)
+  showElement(navUserDetails , APP_CONSTANTS.SELECTOR_CLASSNAMES.FLEX);
+  navUserDetails.classList.add("open")
 }
 
 const toggleNav = () => {
 const navBtn = document.querySelector(".nav-toggle-btn");
-navBtn.addEventListener("click" , test)
+navBtn.addEventListener("click" , openNavigationMenu)
 }
 
 toggleNav()

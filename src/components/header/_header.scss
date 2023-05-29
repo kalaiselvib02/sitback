@@ -5,7 +5,7 @@
 @use "../../scss/fonts";
 
 header {
-    @include mixins.flexbox(space-between, center, false);
+    @include mixins.flexbox(space-between, false, false);
     padding: 1.25rem 2.5rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 14px;
    /**Start of responsive scss **/
@@ -54,6 +54,9 @@ header {
        .nav-user-details{
         @include mixins.flexbox(space-between, center, false);
          /**Start of responsive scss **/
+         &.open{
+            flex-direction: column;
+         }
          @media only screen and (max-width: variables.$mobile-width) {
             display: none;
         }
@@ -70,6 +73,10 @@ header {
                 font-family: Primary-Medium;
                 text-transform: uppercase;
             }
+            @media only screen and (max-width: variables.$mobile-width) {
+               flex-direction: column;
+               @include mixins.flexbox(false, flex-start, 10px);
+            }
         }
     }
     .user-details {
@@ -77,5 +84,8 @@ header {
         font-size: 0.8rem;
         color: variables.$black;
         font-family: Primary-Medium;
+        @media only screen and (max-width: variables.$mobile-width) {
+          margin: 1rem 0;
+         }
     }
 }
