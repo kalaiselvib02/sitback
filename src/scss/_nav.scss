@@ -1,6 +1,7 @@
 @use "variables";
 @use "fonts";
 @use "global";
+
 nav {
   ul {
     li {
@@ -16,7 +17,7 @@ nav {
           content: "";
           min-width: 65px;
           height: 7px;
-          background: #000;
+          background: variables.$black;
           bottom: -22px;
           left: -5px;
           z-index: 2;

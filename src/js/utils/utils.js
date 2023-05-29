@@ -1,3 +1,5 @@
+import { APP_CONSTANTS } from "../../constants/constants.js";
+
 /**
  * Query selector with optional scope
  */
@@ -12,7 +14,7 @@ export const listen = (target, event, callback, capture = false) => {
 };
 
 /**
- * create an element with an optional CSS class
+ * create an element with  CSS class
  */
 export const createElement = (tag, className) => {
   const el = document.createElement(tag);
@@ -21,20 +23,30 @@ export const createElement = (tag, className) => {
   return el;
 };
 
+/**
+ * create an text node element 
+ */
 export const createTextNode = (text) => {
   const el = document.createTextNode(text);
   return el;
 };
 
+/**
+ * create a button element
+ */
 export const createButton = (buttonContent, className) => {
   const button = createElement("button", className);
   button.textContent = buttonContent;
   return button;
 };
 
+/**
+ * append all items with same selector 
+ */
 export const appendGroup = (arr, selector) => {
   arr.forEach((item) => (selector ? selector.appendChild(item) : ""));
 };
+
 
 export const setLocalStorage = (keyName, value) => {
   localStorage.setItem(keyName, JSON.stringify(value));
@@ -49,11 +61,18 @@ export const getLocalStorage = (keyName) => {
 export const clearLocalStorage = (keyName) => {
   localStorage.getItem(keyName) ? localStorage.removeItem(keyName) : "";
 };
+
+/**
+ * check unique entrie before pushing
+ */
 export const checkUnique = (arr, findMatch) =>
   arr.find((item) => item.id === findMatch.id);
 
+/**
+ * set formatting conventions
+ */
 export const convertToRupee = (price) =>
-  parseInt(price).toLocaleString("en-IN");
+  parseInt(price).toLocaleString(APP_CONSTANTS.CURRENCY_STANDARDS.IN , { maximumSignificantDigits: 3 });
 
 export const removeActiveClass = (arr) => {
   arr.forEach((item) => item.classList.remove("active"));

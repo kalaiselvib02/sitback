@@ -56,14 +56,13 @@
 }
 .message {
 	color: variables.$dark;
-	.text.text-1 {
+	.text.status-text {
 		font-size: 0.9rem;
 		font-family: Primary-Medium;
 		margin-bottom: 0.7rem;
 	}
-	.text.text-2 {
+	.text.message-text {
 		font-size: 0.8rem;
-		font-weight: 400;
 		font-family: Primary-Regular;
 	}
 }

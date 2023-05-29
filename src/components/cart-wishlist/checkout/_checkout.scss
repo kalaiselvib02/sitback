@@ -2,6 +2,7 @@
 @use "../../../scss/fonts";
 @use "../../../scss/mixins";
 
+/*** Start of checkout-container **/
 .checkout-container{
     position: absolute;
     bottom: 0px;
@@ -35,3 +36,4 @@
         right: 20px;
     }
 }
+/*** End of checkout-container **/

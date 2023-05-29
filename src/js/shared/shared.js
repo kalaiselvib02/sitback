@@ -79,8 +79,6 @@ if(myCartArr.length) {
 else{
     checkDataLength(APP_CONSTANTS.STORAGE_KEYS.MY_CART , MESSAGE_CONSTANTS.EMPTY_LIST.MY_CART , parentSelector)
 }
-
-
 }
 
 export const populateWishlist = () => {

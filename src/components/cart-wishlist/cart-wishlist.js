@@ -1,6 +1,5 @@
 import { removeActiveClass , checkDataLength , hideElement, createElement, appendGroup, createButton} from "../../js/utils/utils.js";
 import { APP_CONSTANTS } from "../../constants/constants.js";
-import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 import { Checkout } from "./checkout/checkout.js";
 
 export const CartWishlist = {
@@ -17,7 +16,7 @@ const createContainer = () => {
     userPreferedItems()
     Checkout.create()
 }
-
+// Create Nav
 const createCartWishlistNavigation = () => {
     const cartWishlistContainer = createElement("div" , "cart-wishlist-container d-none");
     const closeBtnToggle = createElement("div" , "hide-cart-wishlist-container");
@@ -48,6 +47,7 @@ const createCartWishlistNavigation = () => {
     if(!checkExistingCartWishlistContainer) productsScreen.appendChild(cartWishlistContainer)
 }
 
+// Create Cart ,Wishlist containers
 const userPreferedItems = () => {
     const cartWishlistContainer = document.querySelector(".cart-wishlist-container");
     const cartWishlistDetails = createElement("div" , "cart-wishlist-details");
@@ -70,6 +70,7 @@ const setActiveLinkTab = (dataAttr) => {
         } 
 }
 
+// Set active class for current item
 const activeTabLink = (dataAttr , arrNodes) => {
     const navNodes = Array.from(arrNodes);
     removeActiveClass(navNodes)
@@ -80,7 +81,7 @@ const activeTabLink = (dataAttr , arrNodes) => {
     const findCurrentTabContent = document.getElementById(dataAttr);
     findCurrentTabContent.classList.add("active")
 }
-
+// On click nav item
 const navigateTab = () => {
     const navLinkNodes = document.querySelectorAll(".tabs li a");
     navLinkNodes.forEach((tabLink) => {
@@ -91,6 +92,7 @@ const navigateTab = () => {
     });
 }
 
+// Mobile responsive close container
 const closeCartWishListContainer = () => {
     const closeButton = document.querySelector(".cart-wishlist-container .btn-close");
     closeButton.addEventListener("click" , () => {

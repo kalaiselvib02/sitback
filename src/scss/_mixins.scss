@@ -18,7 +18,7 @@
 /** End of mixin flexbox **/
 
 
-/** Start of mixin flexbox **/
+/** Start of mixin card **/
 @mixin card($img-height , $img-width , $title-text , $text-size) {
    img {
     height: $img-height;
@@ -32,24 +32,31 @@
     font-size: $text-size;
    }
 }
+/** End of mixin card **/
 
 
+/** Start of mixin grid **/
 @mixin grid($col-split , $grid-gap) {
     display: grid;
     grid-template-columns: repeat($col-split, 1fr);
     grid-gap: $grid-gap;
 }
+/** End of mixin grid **/
 
+/** Start of mixin grid-auto-fit  **/
 @mixin  grid-auto-fit ($grid-gap){
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: auto 1fr;
     grid-gap: $grid-gap;
 }
+/** End of mixin grid-auto-fit  **/
+
+/** Start of  text-ellipsis **/
 @mixin text-ellipsis($width) {
     width: $width;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
 }
-
+/** End of  text-ellipsis **/

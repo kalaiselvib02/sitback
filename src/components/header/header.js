@@ -1,3 +1,4 @@
+import { APP_CONSTANTS } from "../../constants/constants.js";
 import { SharedData } from "../../js/shared/shared.js"
 import { createElement, removeActiveClass, select, showElement } from "../../js/utils/utils.js"
 
@@ -57,3 +58,16 @@ if(orderListContainer) orderListContainer.remove()
 const productsScreen = document.querySelector(".products-screen");
 if(productsScreen) showElement(productsScreen)
 }
+
+const test = () => {
+    const navUserDetails = document.querySelector(".nav-user-details");
+  showElement(navUserDetails , APP_CONSTANTS.SELECTOR_CLASSNAMES.FLEX)
+}
+
+const toggleNav = () => {
+const navBtn = document.querySelector(".nav-toggle-btn");
+navBtn.addEventListener("click" , test)
+}
+
+toggleNav()
+

@@ -1,6 +1,5 @@
 @use "../../scss/variables";
 @use "../../scss/common";
-@use "../../scss/animation";
 @use "../../scss/mixins";
 @use "../../scss/functions";
 @use "../../scss/fonts";
@@ -65,11 +64,6 @@ header {
     nav {
         ul {
             @include mixins.flexbox(center, center, 70px);
-            /**Start of responsive scss **/
-            // @media only screen and (max-width: variables.$mobile-width) {
-            //     display: none;
-            // }
-            /**End of responsive scss **/
             a {
                 font-size: 0.8rem;
                 color: variables.$black;

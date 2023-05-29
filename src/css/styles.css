@@ -42,7 +42,14 @@ a {
 
 /** Start of mixin flexbox **/
 /** End of mixin flexbox **/
-/** Start of mixin flexbox **/
+/** Start of mixin card **/
+/** End of mixin card **/
+/** Start of mixin grid **/
+/** End of mixin grid **/
+/** Start of mixin grid-auto-fit  **/
+/** End of mixin grid-auto-fit  **/
+/** Start of  text-ellipsis **/
+/** End of  text-ellipsis **/
 @font-face {
   font-family: "Primary-Thin";
   src: url("../assets/fonts/ProductSans-Thin.ttf") format("truetype");
@@ -128,7 +135,7 @@ nav ul a.active::before {
   content: "";
   min-width: 65px;
   height: 7px;
-  background: #000;
+  background: #000000;
   bottom: -22px;
   left: -5px;
   z-index: 2;
@@ -193,14 +200,13 @@ nav ul a.active::before {
 .message {
   color: #222222;
 }
-.message .text.text-1 {
+.message .text.status-text {
   font-size: 0.9rem;
   font-family: Primary-Medium;
   margin-bottom: 0.7rem;
 }
-.message .text.text-2 {
+.message .text.message-text {
   font-size: 0.8rem;
-  font-weight: 400;
   font-family: Primary-Regular;
 }
 
@@ -296,8 +302,6 @@ header nav ul {
   align-items: center;
   gap: 70px;
   justify-content: center;
-  /**Start of responsive scss **/
-  /**End of responsive scss **/
 }
 header nav ul a {
   font-size: 0.8rem;
@@ -344,7 +348,7 @@ header .user-details {
   content: "";
   width: 60px;
   height: 60px;
-  border: 2px solid #f3f3f3;
+  border: 2px solid "#f3f3f3";
   border-top: 3px solid #000000;
   border-radius: 100%;
   will-change: transform;
@@ -776,7 +780,14 @@ footer .container {
 /** End of responsive variables **/
 /** Start of mixin flexbox **/
 /** End of mixin flexbox **/
-/** Start of mixin flexbox **/
+/** Start of mixin card **/
+/** End of mixin card **/
+/** Start of mixin grid **/
+/** End of mixin grid **/
+/** Start of mixin grid-auto-fit  **/
+/** End of mixin grid-auto-fit  **/
+/** Start of  text-ellipsis **/
+/** End of  text-ellipsis **/
 .quantity-counter {
   background: #fff;
   width: 80px;
@@ -792,6 +803,7 @@ footer .container {
   padding: 0.35rem;
 }
 
+/*** Start of checkout-container **/
 .checkout-container {
   position: absolute;
   bottom: 0px;
@@ -829,6 +841,7 @@ footer .container {
   right: 20px;
 }
 
+/*** End of checkout-container **/
 .orders-list-container {
   padding: 3rem 4rem 2rem;
   background-color: #f7f7f7;
