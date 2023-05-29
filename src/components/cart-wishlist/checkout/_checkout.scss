@@ -3,7 +3,7 @@
 @use "../../../scss/mixins";
 
 .checkout-container{
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     width: 100%;
     background-color: variables.$white;
@@ -29,5 +29,9 @@
     &.d-none{
         display: none;
     }
- 
+    .button-container{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 }

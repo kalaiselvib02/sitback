@@ -1,4 +1,4 @@
-import { removeActiveClass , checkDataLength , hideElement, createElement, appendGroup} from "../../js/utils/utils.js";
+import { removeActiveClass , checkDataLength , hideElement, createElement, appendGroup, createButton} from "../../js/utils/utils.js";
 import { APP_CONSTANTS } from "../../constants/constants.js";
 import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 import { Checkout } from "./checkout/checkout.js";
@@ -20,6 +20,13 @@ const createContainer = () => {
 
 const createCartWishlistNavigation = () => {
     const cartWishlistContainer = createElement("div" , "cart-wishlist-container d-none");
+    const closeBtnToggle = createElement("div" , "hide-cart-wishlist-container");
+    const closeBtn = createButton("" , "btn btn-close");
+    const closeIcon = createElement("i" , "fa-solid fa-xmark");
+    closeBtn.appendChild(closeIcon);
+    closeBtnToggle.appendChild(closeBtn);
+    cartWishlistContainer.appendChild(closeBtnToggle);
+    
     const navigationContainer = createElement("nav" , "cart-wishlist-nav");
     const listContainer = createElement("ul" , "tabs");
     const menuListArr = APP_CONSTANTS.CHECKOUT.MENU_NAV;

@@ -1,13 +1,13 @@
 import { APP_CONSTANTS } from "../../constants/constants.js";
+import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 import { fetchData } from "../services/fetchService.js";
 import { Products } from "../../components/products/products.js";
-import { Cart , toggleCheckoutContainer, toggleMessageContainer } from "../../components/cart-wishlist/cart/cart.js";
-import { checkDataLength, createElement, emptyListMessage, getLocalStorage } from "../utils/utils.js";
+import { Cart } from "../../components/cart-wishlist/cart/cart.js";
+import { checkDataLength, createElement, getLocalStorage } from "../utils/utils.js";
 import { Wishlist } from "../../components/cart-wishlist/wishlist/wishlist.js";
 import { CartWishlist } from "../../components/cart-wishlist/cart-wishlist.js";
 import { Checkout } from "../../components/cart-wishlist/checkout/checkout.js";
-import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
-import { Orders } from "../../components/orders/orders.js";
+
 export const SharedData = {
     fetch : {
         fetchCategories : {
@@ -67,7 +67,7 @@ const getProductsList = async (catId) => {
     populateCart()
     populateWishlist();
     Checkout.populate()
-    // CartWishlist.close();
+    CartWishlist.close();
 }
 export const populateCart = () => {
 const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
@@ -78,7 +78,6 @@ if(myCartArr.length) {
 }
 else{
     checkDataLength(APP_CONSTANTS.STORAGE_KEYS.MY_CART , MESSAGE_CONSTANTS.EMPTY_LIST.MY_CART , parentSelector)
-    toggleMessageContainer(true , parentSelector)
 }
 
 
@@ -93,7 +92,6 @@ export const populateWishlist = () => {
     }
     else{
         checkDataLength(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST , MESSAGE_CONSTANTS.EMPTY_LIST.WISH_LIST , parentSelector)
-        toggleMessageContainer(true , parentSelector)
     }
     
 }

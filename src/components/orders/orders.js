@@ -3,9 +3,8 @@ import { MESSAGE_CONSTANTS } from "../../constants/messages.js";
 import { Card } from "../../js/shared/cards.js";
 import { appendGroup, createElement, getLocalStorage, hideElement, removeActiveClass , clearLocalStorage} from "../../js/utils/utils.js";
 import { Cart, toggleCheckoutContainer } from "../cart-wishlist/cart/cart.js";
-import { Checkout } from "../cart-wishlist/checkout/checkout.js";
 import { Categories } from "../categories/categories.js";
-import { Footer } from "../footer/footer.js";
+
 
 export const Orders = {
   create : {

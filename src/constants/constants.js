@@ -47,6 +47,12 @@ export const APP_CONSTANTS = {
    CLASS_NAMES:{
     CART_CONTAINER:"cartContainer",
     WISH_LIST : "wishlistContainer"
+   },
+   SELECTOR_CLASSNAMES:{
+    CART_WISHLIST_CONTAINER:".cart-wishlist-container",
+    PRODUCTS_SCREEN:".products-screen",
+    CART_WISHLIST_DETAILS:".cart-wishlist-details",
+    
    }
   };
   

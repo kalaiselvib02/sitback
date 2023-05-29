@@ -47,7 +47,6 @@ let myCart = cartStore ? cartStore : [];
   } else {
     const currentElement = myCart.find((cartItem) => cartItem.id == item.id);
     QuantityCounter.increment(currentElement);
-    Checkout.calculate(myCart);
   }
 
   const messageContainer = document.querySelector(".cart-container .message-container");
@@ -58,8 +57,8 @@ let myCart = cartStore ? cartStore : [];
   if(!myWishlistArr.length){
     checkDataLength(APP_CONSTANTS.STORAGE_KEYS.WISH_LIST , MESSAGE_CONSTANTS.EMPTY_LIST.WISH_LIST , wishListContainer);
   }
-  populateWishlist(myWishlistArr);
-
+  // populateWishlist(myWishlistArr);
+  Checkout.calculate(myCart);
 };
 
 const removeFromCartStore = (item) => {
@@ -104,12 +103,3 @@ export const toggleCheckoutContainer = (show) => {
   show ? showElement(containerElement) : hideElement(containerElement)
 };
 
-export const toggleMessageContainer = (show, container) => {
- 
-  // const containerElement = container.querySelector(".message-container");
-  // if (containerElement) {
-  //   show
-  //     ? (containerElement.style.display = "flex")
-  //     : (containerElement.style.display = "none");
-  // }
-};

@@ -240,6 +240,16 @@ header .logo {
   /**Start of responsive scss **/
   /**End of responsive scss **/
 }
+header .logo.col-1 {
+  width: 40%;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  header .logo.col-1 {
+    width: auto;
+  }
+}
 header .logo a {
   color: #000000;
   letter-spacing: 1.1px;
@@ -249,6 +259,38 @@ header .logo a {
     text-align: center;
   }
 }
+header .col-2 {
+  width: 60%;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  header .col-2 {
+    width: auto;
+  }
+}
+header .col-2 .nav-toggle-btn {
+  display: none;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  header .col-2 .nav-toggle-btn {
+    display: block;
+  }
+}
+header .col-2 .nav-user-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  header .col-2 .nav-user-details {
+    display: none;
+  }
+}
 header nav ul {
   display: flex;
   align-items: center;
@@ -256,11 +298,6 @@ header nav ul {
   justify-content: center;
   /**Start of responsive scss **/
   /**End of responsive scss **/
-}
-@media only screen and (max-width: 767px) {
-  header nav ul {
-    display: none;
-  }
 }
 header nav ul a {
   font-size: 0.8rem;
@@ -584,12 +621,12 @@ footer .container {
 }
 
 .cart-wishlist-container {
-  position: fixed;
+  position: absolute;
   width: 25%;
   background: #f7f7f7;
   height: 92vh;
   right: 0px;
-  top: 58px;
+  top: 0px;
   /**Start of responsive scss **/
   /**End of responsive scss **/
 }
@@ -756,7 +793,7 @@ footer .container {
 }
 
 .checkout-container {
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   width: 100%;
   background-color: #fff;
@@ -785,6 +822,11 @@ footer .container {
 }
 .checkout-container.d-none {
   display: none;
+}
+.checkout-container .button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .orders-list-container {

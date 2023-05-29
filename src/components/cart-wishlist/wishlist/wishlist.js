@@ -2,7 +2,7 @@ import { APP_CONSTANTS } from "../../../constants/constants.js";
 import { checkDataLength, checkUnique , emptyListMessage, getLocalStorage, hideElement, setLocalStorage, showElement} from "../../../js/utils/utils.js";
 import { Card } from "../../../js/shared/cards.js";
 import { CartWishlist } from "../cart-wishlist.js";
-import { Cart, toggleCheckoutContainer , toggleMessageContainer} from "../cart/cart.js";
+import { Cart, toggleCheckoutContainer} from "../cart/cart.js";
 import { Toaster } from "../../ui/toaster.js";
 import { MESSAGE_CONSTANTS } from "../../../constants/messages.js";
 

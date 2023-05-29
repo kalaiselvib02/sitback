@@ -17,6 +17,15 @@ header {
     .logo {
         font-size: 1rem;
         font-family: "Primary-Medium";
+       
+        &.col-1{
+            width: 40%;
+             /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+               width: auto;
+            }
+            /**End of responsive scss **/
+        }
         a {
             color: variables.$black;
             letter-spacing: 1.1px;
@@ -27,13 +36,39 @@ header {
         }
         /**End of responsive scss **/
     }
+    .col-2{
+        width: 60%;
+        /**Start of responsive scss **/
+        @media only screen and (max-width: variables.$mobile-width) {
+           width: auto;
+        }
+        /**End of responsive scss **/
+       .nav-toggle-btn{
+        display: none;
+        /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+                display: block;
+            }
+        /**End of responsive scss **/
+       }
+
+       .nav-user-details{
+        @include mixins.flexbox(space-between, center, false);
+         /**Start of responsive scss **/
+         @media only screen and (max-width: variables.$mobile-width) {
+            display: none;
+        }
+        /**End of responsive scss **/
+       }
+        
+    }
     nav {
         ul {
             @include mixins.flexbox(center, center, 70px);
             /**Start of responsive scss **/
-            @media only screen and (max-width: variables.$mobile-width) {
-                display: none;
-            }
+            // @media only screen and (max-width: variables.$mobile-width) {
+            //     display: none;
+            // }
             /**End of responsive scss **/
             a {
                 font-size: 0.8rem;

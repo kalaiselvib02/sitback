@@ -5,12 +5,12 @@
   position: relative;
 }
 .cart-wishlist-container {
-  position: fixed;
+  position: absolute;
   width: 25%;
   background: variables.$light;
   height: 92vh;
   right: 0px;
-  top: 58px;
+  top: 0px;
    /**Start of responsive scss **/
    @media only screen and (max-width: variables.$mobile-width) {
     width: 100%;

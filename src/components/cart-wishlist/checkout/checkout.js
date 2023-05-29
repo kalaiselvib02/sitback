@@ -49,12 +49,10 @@ const createContainer = () => {
 
 const calculatePrice = (ordersListArr) => {
   let price = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE);
-  if (price) console.log(price);
-  let totalPrice = price ? price : 0;
-  ordersListArr.forEach(
-    (element) => (totalPrice += element.quantity * parseInt(element.price))
+  let totalPrice =  price ? price : 0;
+  ordersListArr.forEach(element => (totalPrice += element.quantity * parseInt(element.price))
   );
-  totalPrice = convertToRupee(totalPrice);
+  // totalPrice = convertToRupee(totalPrice);
   Checkout.display(totalPrice);
 };
 
@@ -62,8 +60,9 @@ const displayPrice = (totalPrice) => {
   const priceContainer = document.querySelector(".total-amount");
   if (priceContainer) {
     priceContainer.textContent = totalPrice;
-    setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE, totalPrice);
+    
   }
+  setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.TOTAL_PRICE , totalPrice);
 };
 
 const populatePrice = () => {
