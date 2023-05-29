@@ -1,7 +1,6 @@
 @use "../../scss/variables";
 @use "../../scss/common";
 @use "../../scss/mixins";
-@use "../../scss/functions";
 @use "../../scss/fonts";
 
 header {
@@ -11,6 +10,7 @@ header {
    /**Start of responsive scss **/
    @media only screen and (max-width: variables.$mobile-width) {
     padding: 1.25rem 1.5rem;
+    display: inherit;
     }
     /**End of responsive scss **/
     .logo {
@@ -21,7 +21,8 @@ header {
             width: 40%;
              /**Start of responsive scss **/
             @media only screen and (max-width: variables.$mobile-width) {
-               width: auto;
+               width: 100%;
+               @include mixins.flexbox(space-between, center, false);
             }
             /**End of responsive scss **/
         }
@@ -34,6 +35,17 @@ header {
             text-align: center;
         }
         /**End of responsive scss **/
+
+         /**End of responsive scss **/
+       .nav-toggle-btn{
+        display: none;
+        /**Start of responsive scss **/
+            @media only screen and (max-width: variables.$mobile-width) {
+                display: block;
+                cursor: pointer;
+            }
+        /**End of responsive scss **/
+       }
     }
     .col-2{
         width: 60%;
@@ -41,21 +53,14 @@ header {
         @media only screen and (max-width: variables.$mobile-width) {
            width: auto;
         }
-        /**End of responsive scss **/
-       .nav-toggle-btn{
-        display: none;
-        /**Start of responsive scss **/
-            @media only screen and (max-width: variables.$mobile-width) {
-                display: block;
-            }
-        /**End of responsive scss **/
-       }
-
        .nav-user-details{
         @include mixins.flexbox(space-between, center, false);
          /**Start of responsive scss **/
          &.open{
             flex-direction: column;
+            @include mixins.flexbox(false, flex-start, false);
+            margin: 1rem 0;
+            
          }
          @media only screen and (max-width: variables.$mobile-width) {
             display: none;

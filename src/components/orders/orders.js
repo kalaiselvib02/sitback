@@ -8,6 +8,7 @@ import {
   hideElement,
   removeActiveClass,
   clearLocalStorage,
+  setLocalStorage,
 } from "../../js/utils/utils.js";
 import { Cart, toggleCheckoutContainer } from "../cart-wishlist/cart/cart.js";
 import { Categories } from "../categories/categories.js";
@@ -53,6 +54,7 @@ const displayOrderList = () => {
   hideElement(productsScreen);
   Orders.create.container();
   const myOrders = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+ 
   if (myOrders) {
     const orderListContainer = document.querySelector(".orders-list");
     orderListContainer.innerHTML = "";

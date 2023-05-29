@@ -48,12 +48,6 @@ export const APP_CONSTANTS = {
     CART_CONTAINER:"cartContainer",
     WISH_LIST : "wishlistContainer"
    },
-   SELECTOR_CLASSNAMES:{
-    CART_WISHLIST_CONTAINER:".cart-wishlist-container",
-    PRODUCTS_SCREEN:".products-screen",
-    CART_WISHLIST_DETAILS:".cart-wishlist-details",
-    FLEX:"flex"
-   },
    CURRENCY_STANDARDS:{
     IN:"en-IN"
    }

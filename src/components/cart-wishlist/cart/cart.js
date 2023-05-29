@@ -42,7 +42,7 @@ const addToCartStore = (item) => {
       APP_CONSTANTS.TOASTER.SUCCESS,
       MESSAGE_CONSTANTS.TOASTER.CART.CART_SUCCESS
     );
-
+    Checkout.calculate(myCart);
     setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART, myCart);
   } else {
     const currentElement = myCart.find((cartItem) => cartItem.id == item.id);
@@ -56,7 +56,7 @@ const addToCartStore = (item) => {
 
   toggleCheckoutContainer(true);
 
-  Checkout.calculate(myCart);
+ 
 };
 
 // Remove from cart store , when item quantity is < 0

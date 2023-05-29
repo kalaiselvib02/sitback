@@ -42,6 +42,7 @@ const createQuantityCounter = (itemDetails, fragment) => {
 };
 
 const incrementQuantity = (item) => {
+  
   const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
   if (myCartArr) {
     const currentIndex = myCartArr.findIndex(

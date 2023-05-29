@@ -60,9 +60,8 @@ if(productsScreen) showElement(productsScreen)
 }
 
 const openNavigationMenu = () => {
-    const navUserDetails = document.querySelector(".nav-user-details");
-  showElement(navUserDetails , APP_CONSTANTS.SELECTOR_CLASSNAMES.FLEX);
-  navUserDetails.classList.add("open")
+  const navUserDetails = document.querySelector(".nav-user-details");
+  navUserDetails.classList.toggle("open")
 }
 
 const toggleNav = () => {
