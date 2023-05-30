@@ -30,13 +30,13 @@ const addToCartStore = (item) => {
   const existingItem = checkUnique(myCart, item);
   if (!existingItem) {
     Cart.displayCart(item);
-    item.quantity = item.quantity ? item.quantity : 1;
+    item.quantity = 1;
     myCart = [...myCart, item];
 
     const warningIcon = document.querySelector(".warning-icon");
     const successIcon = document.querySelector(".fa-check");
-    showElement(successIcon, APP_CONSTANTS.SELECTOR_CLASSNAMES.FLEX);
-    hideElement(warningIcon, APP_CONSTANTS.SELECTOR_CLASSNAMES.FLEX);
+    showElement(successIcon, APP_CONSTANTS.CLASS_NAMES.FLEX);
+    hideElement(warningIcon, APP_CONSTANTS.CLASS_NAMES.FLEX);
 
     Toaster.show(
       APP_CONSTANTS.TOASTER.SUCCESS,

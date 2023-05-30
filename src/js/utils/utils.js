@@ -72,12 +72,18 @@ export const checkUnique = (arr, findMatch) =>
  * set formatting conventions
  */
 export const convertToRupee = (price) =>
-  parseInt(price).toLocaleString(APP_CONSTANTS.CURRENCY_STANDARDS.IN , { maximumSignificantDigits: 3 });
+  parseInt(price).toLocaleString(APP_CONSTANTS.CURRENCY_STANDARDS.IN );
 
+/**
+ * Remove active class
+ */
 export const removeActiveClass = (arr) => {
   arr.forEach((item) => item.classList.remove("active"));
 };
 
+/**
+ * Check if no items are present in container
+ */
 export const checkDataLength = (key, text, wrapper) => {
   const dataArr = getLocalStorage(key);
   if (!dataArr.length) {
@@ -85,6 +91,9 @@ export const checkDataLength = (key, text, wrapper) => {
   }
 };
 
+/**
+ * create no items text
+ */
 export const emptyListMessage = (text, wrapper) => {
   const messageContainer = createElement("div", "message-container");
   const messageElement = document.createElement("p", "empty-list");
@@ -94,6 +103,9 @@ export const emptyListMessage = (text, wrapper) => {
   if (!checkExisting) wrapper.appendChild(messageContainer);
 };
 
+/**
+ * Hide element
+ */
 export const hideElement = (selector, flexClass) => {
   if (selector) {
     if (flexClass) {
@@ -103,7 +115,9 @@ export const hideElement = (selector, flexClass) => {
     }
   }
 };
-
+/**
+ * Show element
+ */
 export const showElement = (selector, flexClass) => {
   if (selector) {
     if (flexClass) {

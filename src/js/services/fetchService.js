@@ -1,9 +1,9 @@
 import { Loader } from "../../components/loader/loader.js";
 import { showFetchErrorMessage } from "../shared/shared.js";
-export async function fetchData(searchObj) {
+export async function fetchData(url) {
   let response;
   const options = {
-    url: searchObj.url,
+    url: url,
   };
   try {
     Loader.display();

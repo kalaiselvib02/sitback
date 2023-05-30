@@ -7,7 +7,6 @@ import { Footer } from "../footer/footer.js";
 import { APP_CONSTANTS } from "../../constants/constants.js";
 
 export const Categories = {
-    get : () => getCategoriesList(),
     display: () => displayCategoryList(),
     navigate : () => navigateToProduct()
 }
@@ -30,14 +29,11 @@ const createHeroText = () => {
     if(!checkExistingContainer) wrapper.appendChild(categoriesContainer);
 }
 
-const getCategoriesList =  async () => {
-    const responseData = await SharedData.fetch.fetchCategories.getList();
-    return responseData
-} 
+
 
 const displayCategoryList =  async () => {
     createHeroText();
-    const dataList = await Categories.get()
+    const dataList = await SharedData.fetch.fetchCategories.getList();
     dataList.forEach(element => createCategoryItem(element));
     const wrapper = document.querySelector(".wrapper");
     const footer = Footer.create();

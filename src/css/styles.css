@@ -17,7 +17,6 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   font-family: "Product Sans", sans-serif;
   position: relative;
 }
@@ -139,6 +138,16 @@ nav ul a.active::before {
   bottom: -22px;
   left: -5px;
   z-index: 2;
+  /**Start of responsive scss **/
+  /**End of responsive scss **/
+}
+@media only screen and (max-width: 767px) {
+  nav ul a.active::before {
+    min-width: 45px;
+    height: 3px;
+    bottom: -6px;
+    left: 0px;
+  }
 }
 
 .toast {

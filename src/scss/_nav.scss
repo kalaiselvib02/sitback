@@ -21,6 +21,15 @@ nav {
           bottom: -22px;
           left: -5px;
           z-index: 2;
+          /**Start of responsive scss **/
+          @media only screen and (max-width: variables.$mobile-width) {
+            min-width: 45px;
+            height: 3px;
+            bottom: -6px;
+            left: 0px;
+            }
+            /**End of responsive scss **/
+         
         }
       }
     }

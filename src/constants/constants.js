@@ -37,7 +37,7 @@ export const APP_CONSTANTS = {
       MY_CART:"myCart",
       WISH_LIST:"wishList",
       TOTAL_PRICE : "totalPrice",
-
+      ORDERS:"orders",
     },
     TOASTER:{
       TIME_INTERVAL : 2500,
@@ -46,7 +46,8 @@ export const APP_CONSTANTS = {
     },
    CLASS_NAMES:{
     CART_CONTAINER:"cartContainer",
-    WISH_LIST : "wishlistContainer"
+    WISH_LIST : "wishlistContainer",
+    FLEX:"flex"
    },
    CURRENCY_STANDARDS:{
     IN:"en-IN"

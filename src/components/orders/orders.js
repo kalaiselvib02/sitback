@@ -53,12 +53,14 @@ const displayOrderList = () => {
   const productsScreen = document.querySelector(".products-screen");
   hideElement(productsScreen);
   Orders.create.container();
-  const myOrders = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
- 
-  if (myOrders) {
+  const myCartArr = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.MY_CART);
+  let orders = getLocalStorage(APP_CONSTANTS.STORAGE_KEYS.ORDERS);
+  orders = [...orders , myCartArr];
+  setLocalStorage(APP_CONSTANTS.STORAGE_KEYS.ORDERS , orders)
+  if (orders) {
     const orderListContainer = document.querySelector(".orders-list");
     orderListContainer.innerHTML = "";
-    myOrders.forEach((element) => Orders.create.listItem(element));
+    myCartArr.forEach((element) => Orders.create.listItem(element));
   }
   const allNavLinks = document.querySelectorAll("header ul .nav-link");
   removeActiveClass(allNavLinks);
