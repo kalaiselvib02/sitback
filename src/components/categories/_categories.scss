@@ -47,7 +47,7 @@
         }
         /**End of responsive scss **/
         .card{
-            font-family: variables.$font-primary;
+            font-family: Primary-Regular;
             width: 33%;
             @include mixins.card(500px ,100% , 1.7rem  , 0.9rem);
             /**Start of responsive scss **/

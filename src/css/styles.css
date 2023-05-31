@@ -17,7 +17,7 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
-  font-family: "Product Sans", sans-serif;
+  font-family: Primary-Regular;
   position: relative;
 }
 
@@ -127,7 +127,7 @@ nav ul li {
 }
 nav ul a {
   font-weight: 400;
-  font-family: "Product Sans", sans-serif;
+  font-family: Primary-Regular;
 }
 nav ul a.active::before {
   position: absolute;
@@ -444,7 +444,7 @@ header .user-details {
   }
 }
 .categories-container .categories-list .card {
-  font-family: "Product Sans", sans-serif;
+  font-family: Primary-Regular;
   width: 33%;
   /**Start of responsive scss **/
   /**End of responsive scss **/
@@ -852,7 +852,7 @@ footer .container {
 }
 .checkout-container .container-heading {
   font-size: 0.7rem;
-  font-family: "Product Sans", sans-serif;
+  font-family: Primary-Regular;
 }
 .checkout-container .total-price {
   font-family: Primary-Light;
@@ -981,8 +981,4 @@ footer .container {
   margin-bottom: 0.5rem;
   color: #777575;
   font-family: Primary-Regular;
-  width: 70%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }/*# sourceMappingURL=styles.css.map */
