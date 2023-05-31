@@ -1,5 +1,6 @@
 
 @use "../../scss/variables";
+@use "../../scss/mixins";
 
 @keyframes spin {
 	from {
@@ -16,9 +17,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	    @include mixins.flexbox(center , center , false)
 		
 	}
 	&::after {
